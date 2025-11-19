@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Projetos | Fabiano Fonseca</title>
+    <style>
+        /* Estilos baseados na paleta e layout do seu CV */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap' );
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0a2d4a; /* Cor de fundo principal do seu CV */
+            color: #ffffff;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: #c5c5c5;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+        .project {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.05); /* Um leve destaque */
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .project:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .project-image {
+            text-align: center;
+        }
+        .project-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 2px solid #33a1fd; /* Cor de destaque do CV */
+        }
+        .project-content h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #33a1fd; /* Cor de destaque do CV */
+            margin: 0 0 10px 0;
+        }
+        .project-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin: 0;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #33a1fd;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .project-link:hover {
+            background-color: #1e88e5;
+        }
+
+        /* Layout para telas maiores */
+        @media (min-width: 768px) {
+            .project {
+                flex-direction: row;
+                align-items: center;
+            }
+            .project:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .project-image {
+                flex: 0 0 40%; /* Imagem ocupa 40% */
+            }
+            .project-content {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Portfólio de Projetos</h1>
+            <p>Projetos selecionados que demonstram a aplicação prática de Business Intelligence, DataViz e Modelagem Analítica para transformar dados em decisões estratégicas.</p>
+        </header>
+
+        <div class="portfolio-grid">
+            <!-- Projeto Dune Chart -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="dune-chart.png" alt="Dune Chart">
+                </div>
+                <div class="project-content">
+                    <h2>Dune Chart: Visualização com História</h2>
+                    <p>Inspirado nos Lençóis Maranhenses, este gráfico transforma a linha nativa do Power BI em uma visualização rica de performance YoY%, onde a forma e a cor das "dunas" contam a história da performance mensal.</p>
+                    <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Projeto DJ Equalizer -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="dj-equalizer.png" alt="DJ Equalizer">
+                </div>
+                <div class="project-content">
+                    <h2>DJ Equalizer: Tirando um Som dos Dados</h2>
+                    <p>Uma abordagem criativa que utiliza a metáfora de uma mesa de som de DJ para representar dados de negócio. Os "volumes" são os valores realizados e o "ganho" exibe a variação YoY, criando uma conexão intuitiva e inovadora.</p>
+                    <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Projeto IBCS -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="ibcs-1.png" alt="Soluções IBCS">
+                </div>
+                <div class="project-content">
+                    <h2>Soluções IBCS com Visuais Nativos</h2>
+                    <p>Série de projetos aplicando o padrão IBCS de forma eficiente no Power BI. A solução recria tabelas, gráficos de cascata e variações com Medidas SVG e Cálculos Visuais, otimizando a clareza e a performance dos relatórios.</p>
+                    <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
+                </div>
+            </div>
+            
+            <!-- Projeto Parameter Field (Adicionado ) -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="parameter-field.png" alt="Parameter Fields Avançado">
+                </div>
+                <div class="project-content">
+                    <h2>Parameter Fields: Múltiplas Análises</h2>
+                    <p>Solução avançada que usa Campos de Parâmetros para permitir que o usuário alterne entre diferentes contextos de análise com um único clique, melhorando a usabilidade e garantindo a clareza da comparação de métricas.</p>
+                    <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
