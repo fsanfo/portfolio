@@ -204,6 +204,28 @@
             box-shadow: 0 4px 10px rgba(51, 161, 253, 0.4);
         }
 
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .project-tag {
+            font-size: 0.78rem;
+            color: var(--primary-blue);
+            background-color: rgba(51, 161, 253, 0.1);
+            border: 1px solid rgba(51, 161, 253, 0.3);
+            border-radius: 20px;
+            padding: 3px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background-color: rgba(51, 161, 253, 0.25);
+            color: #fff;
+        }
+
         /* CENTRALIZAÇÃO DO CONTATO PARA TELAS PEQUENAS (Mobile) */
         @media (max-width: 767px) {
             .contact-list {
@@ -269,7 +291,7 @@
             }
             .contact-item a {
                 justify-content: flex-start;
-            }s
+            }
         }
     </style>
 </head>
@@ -281,7 +303,7 @@
         <aside class="sidebar">
             <div class="personal-info">
                 <!-- Avatar Adicionado -->
-                <img src="avatar-anime-3.png" alt="Avatar de Fabiano Fonseca" class="avatar">
+                <img src="assets/avatar-anime-3.png" alt="Avatar de Fabiano Fonseca" class="avatar">
                 
                 <!-- Dados Pessoais de Identificação -->
                 <h2>Fabiano Fonseca</h2>
@@ -333,12 +355,18 @@
                 <div class="project">
                     <div class="project-image">
                         <!-- Lembre-se de manter o arquivo 'dune-chart.png' na pasta do seu projeto -->
-                        <img src="dune-chart.png" alt="Dune Chart">
+                        <img src="assets/dune-chart.png" alt="Dune Chart">
                     </div>
                     <div class="project-content">
                         <h2>Dune Chart: Visualização com História</h2>
                         <p>Inspirado nos Lençóis Maranhenses, este gráfico transforma a linha nativa do Power BI em uma visualização rica de performance YoY%, onde a forma e a cor das "dunas" contam a história da performance mensal.</p>
                         <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#DataVisualization</span>
+                            <span class="project-tag">#DuneChart</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
                     </div>
                 </div>
 
@@ -346,12 +374,18 @@
                 <div class="project">
                     <div class="project-image">
                         <!-- Lembre-se de manter o arquivo 'dj-equalizer.png' na pasta do seu projeto -->
-                        <img src="dj-equalizer.png" alt="DJ Equalizer">
+                        <img src="assets/dj-equalizer.png" alt="DJ Equalizer">
                     </div>
                     <div class="project-content">
                         <h2>DJ Equalizer: Tirando um Som dos Dados</h2>
                         <p>Uma abordagem criativa que utiliza a metáfora de uma mesa de som de DJ para representar dados de negócio. Os "volumes" são os valores realizados e o "ganho" exibe a variação YoY, criando uma conexão intuitiva e inovadora.</p>
                         <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataViz</span>
+                            <span class="project-tag">#DataVisualization</span>
+                            <span class="project-tag">#DJEqualizer</span>
+                            <span class="project-tag">#PowerBI</span>
+                        </div>
                     </div>
                 </div>
 
@@ -359,27 +393,155 @@
                 <div class="project">
                     <div class="project-image">
                         <!-- Lembre-se de manter o arquivo 'ibcs-1.png' na pasta do seu projeto -->
-                        <img src="ibcs-1.png" alt="Soluções IBCS">
+                        <img src="assets/ibcs-1.png" alt="Soluções IBCS">
                     </div>
                     <div class="project-content">
                         <h2>Soluções IBCS com Visuais Nativos</h2>
                         <p>Série de projetos aplicando o padrão IBCS de forma eficiente no Power BI. A solução recria tabelas, gráficos de cascata e variações com Medidas SVG e Cálculos Visuais, otimizando a clareza e a performance dos relatórios.</p>
                         <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#IBCS</span>
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#SVG</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Projeto PyFabricOps -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/pyfabricops.png" alt="PyFabricOps - Automação Power BI com Python">
+                    </div>
+                    <div class="project-content">
+                        <h2>PyFabricOps: Automatizando Refresh no Power BI com Python</h2>
+                        <p>Script Python desenvolvido para orquestrar o refresh de Dataflows Gen1 e Semantic Models em múltiplos workspaces do Power BI Service. Utilizando a biblioteca <strong>pyfabricops</strong>, autenticação OAuth e logging estruturado, a solução elimina dezenas de cliques manuais, reduz erros humanos e entrega rastreabilidade completa. Data Engineering também é sobre governança, observabilidade e automação.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#Python</span>
+                            <span class="project-tag">#DataEngineering</span>
+                            <span class="project-tag">#pyfabricops</span>
+                            <span class="project-tag">#MicrosoftFabric</span>
+                            <span class="project-tag">#DataOps</span>
+                            <span class="project-tag">#Automação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Forecast -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/forecast.png" alt="Forecast: Abordagens e Limitações">
+                    </div>
+                    <div class="project-content">
+                        <h2>Forecast: Abordagens e Limitações</h2>
+                        <p>Análise comparativa das três principais abordagens de forecast utilizadas no mercado: venda futura, média móvel e inteligência temporal (ano anterior + growth). O estudo detalha os pontos fortes e fracos de cada método, concluindo que não existe um "melhor forecast", mas sim o mais adequado ao contexto e à decisão a ser tomada.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#Forecast</span>
+                            <span class="project-tag">#Planejamento</span>
+                            <span class="project-tag">#DataAnalytics</span>
+                            <span class="project-tag">#PowerBI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Governança de Dados -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/governanca.png" alt="Governança de Dados">
+                    </div>
+                    <div class="project-content">
+                        <h2>Quando a Reunião Vira Debate de Dashboard, a Governança Falhou</h2>
+                        <p>Se as reuniões de diretoria se tornam disputas sobre qual dashboard está correto, o problema não é o dashboard — é a falta de governança de dados. Este post aborda como garantir uma única versão da verdade: métricas padronizadas seguindo regras de mercado, curadoria pela controladoria e rastreabilidade na ingestão e transformação dos dados. O papel do analista vai muito além de "fazer gráfico".</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#GovernançaDeDados</span>
+                            <span class="project-tag">#DataGovernance</span>
+                            <span class="project-tag">#Dados</span>
+                            <span class="project-tag">#BusinessIntelligence</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Projeto Parameter Field (Adicionado ) -->
                 <div class="project">
                     <div class="project-image">
                         <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
-                        <img src="parameter-field.png" alt="Parameter Fields Avançado">
+                        <img src="assets/parameter-field.png" alt="Parameter Fields Avançado">
                     </div>
                     <div class="project-content">
                         <h2>Parameter Fields: Múltiplas Análises</h2>
                         <p>Solução avançada que usa Campos de Parâmetros para permitir que o usuário alterne entre diferentes contextos de análise com um único clique, melhorando a usabilidade e garantindo a clareza da comparação de métricas.</p>
                         <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#DataAnalytics</span>
+                            <span class="project-tag">#BusinessIntelligence</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Projeto Calendar Oracle -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/calendar-oracle.png" alt="Oracle Calendar">
+                    </div>
+                    <div class="project-content">
+                        <h2>Dim Calendar: Oracle Database</h2>
+                        <p>Uma tabela calendário no Oracle utilizando PL/SQL, DBMS_SCHEDULER e Jobs para manter a sua dimensão sempre robusta e atualizada na camada de banco de dados.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataWarehouse</span>
+                            <span class="project-tag">#Oracle</span>
+                            <span class="project-tag">#PLSQL</span>
+                            <span class="project-tag">#DataEngineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Greater Expectations -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/greater-expectations.png" alt="Greater Expectations">
+                    </div>
+                    <div class="project-content">
+                        <h2>Great Expectations: Data Quality e Observabilidade Proativa</h2>
+                        <p>Este projeto apresenta a implementação do Great Expectations (GE), um framework essencial para a qualidade e observabilidade de dados. O GE permite a definição e o monitoramento de expectativas de dados, atuando como um checkpoint proativo para detectar anomalias, inconsistências e violações de regras de negócio na fonte. A aplicação deste conceito, mesmo em bancos transacionais, garante que apenas dados íntegros avancem pela arquitetura analítica (Bronze → Silver → Gold), transformando a validação em uma estratégia contínua de confiança e maturidade de dados. </p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataDriven</span>
+                            <span class="project-tag">#DataQuality</span>
+                            <span class="project-tag">#DataObservability</span>
+                            <span class="project-tag">#GreatExpectations</span>
+                            <span class="project-tag">#Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Dax Optimizer Basic -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/dax-optimizer.png" alt="Dax Optimizer Basic">
+                    </div>
+                    <div class="project-content">
+                        <h2>DAX Optimizer Basic: Otimização de Performance</h2>
+                        <p>Aplicação das recomendações do DAX Optimizer Basic para analisar e otimizar um modelo semântico real no Power BI. A implementação resultou em uma redução de mais de 60% nos problemas identificados e uma melhoria superior a 70% no desempenho da CPU, comprovando a eficácia da ferramenta para garantir a performance e eficiência em relatórios complexos. </p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DAX</span>
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#SQLBI</span>
+                            <span class="project-tag">#Performance</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
