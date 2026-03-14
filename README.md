@@ -30,6 +30,9 @@ portfolio/
 │   ├── governanca.png
 │   ├── pyfabricops.png
 │   └── ...
+├── cv/                 # Currículos em PDF
+│   ├── FabianoFonsecaResume-pt-BR.pdf   # CV em Português Brasileiro
+│   └── FabianoFonsecaResume-en-US.pdf   # CV em Inglês Americano
 └── README.md
 ```
 
@@ -78,6 +81,17 @@ start index.html
 
 # Ou com extensão Live Server no VS Code
 ```
+
+---
+
+## 📄 Curriculum Vitae
+
+O portfólio disponibiliza o CV para download diretamente na sidebar, nos dois idiomas:
+
+| Idioma | Arquivo |
+|---|---|
+| 🇧🇷 Português | `cv/FabianoFonsecaResume-pt-BR.pdf` |
+| 🇺🇸 English | `cv/FabianoFonsecaResume-en-US.pdf` |
 
 ---
 
