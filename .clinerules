@@ -1,0 +1,262 @@
+# .clinerules — Diretrizes de Codificação para Data / ML / IA
+# Stack: Python · SQL · DAX (Power BI) · Documentação baseada em projeto
+# Autonomia: Moderada — confirmar antes de ações críticas
+
+# ============================================================
+# 1. COMPORTAMENTO GERAL
+# ============================================================
+
+## Autonomia e Confirmações
+- SEMPRE peça confirmação antes de: deletar arquivos, sobrescrever dados, executar queries de escrita (INSERT/UPDATE/DELETE/DROP), enviar dados para APIs externas ou alterar variáveis de ambiente.
+- Para leitura, análise e geração de novos arquivos, pode agir sem confirmação.
+- Em caso de dúvida sobre o impacto de uma ação, prefira perguntar antes de executar.
+- Se uma tarefa puder ser feita de mais de uma forma com trade-offs relevantes, apresente as opções e aguarde escolha.
+
+## Raciocínio e Transparência
+- Explique brevemente o raciocínio antes de escrever código complexo.
+- Ao fazer alterações em código existente, descreva o que mudou e por quê.
+- Sinalize claramente quando uma solução for uma simplificação ou protótipo, não produção-ready.
+- Prefira soluções explícitas e legíveis a soluções excessivamente inteligentes/compactas.
+
+---
+
+# ============================================================
+# 2. PYTHON — BOAS PRÁTICAS
+# ============================================================
+
+## Estilo e Qualidade
+- Seguir PEP 8 rigorosamente: indentação de 4 espaços, linhas de até 88 caracteres (padrão Black).
+- Usar type hints em todas as funções e métodos (PEP 484).
+- Preferir f-strings para formatação de strings.
+- Evitar variáveis de nome único (exceto iteradores simples como `i`, `x`).
+- Nunca usar `import *` — sempre importações explícitas.
+
+## Estrutura de Código
+- Funções devem ter responsabilidade única (Single Responsibility Principle).
+- Máximo de 40 linhas por função; se ultrapassar, sugerir refatoração.
+- Separar lógica de negócio, acesso a dados e apresentação em camadas distintas.
+- Usar dataclasses ou Pydantic para representar estruturas de dados complexas.
+
+## Data Science / ML / IA
+- Usar pandas com operações vetorizadas; evitar `.iterrows()` salvo justificativa.
+- Sempre definir `random_state` / `seed` em modelos e divisões de dados para reprodutibilidade.
+- Separar etapas de pipeline em funções nomeadas: `load_data()`, `preprocess()`, `train()`, `evaluate()`.
+- Preferir `sklearn.pipeline.Pipeline` para encadear transformações.
+- Logar métricas e parâmetros de experimentos (MLflow, ou ao menos logging estruturado).
+- Nunca commitar dados brutos ou modelos treinados — usar `.gitignore` adequado.
+
+## Tratamento de Erros
+- Usar exceções específicas, nunca `except Exception` sem logar.
+- Validar inputs de funções críticas com assertions ou Pydantic.
+- Utilizar `logging` ao invés de `print()` em código de produção.
+
+## Ambientes e Dependências
+- Sempre manter `requirements.txt` ou `pyproject.toml` atualizado.
+- Sugerir uso de ambientes virtuais (`venv` ou `conda`).
+- Fixar versões de dependências críticas (ex: `pandas==2.2.0`).
+
+---
+
+# ============================================================
+# 3. SQL — BOAS PRÁTICAS
+# ============================================================
+
+## Estilo
+- Palavras-chave SQL em MAIÚSCULAS: SELECT, FROM, WHERE, JOIN, GROUP BY, etc.
+- Nomes de tabelas e colunas em snake_case.
+- Sempre usar aliases descritivos em JOINs (ex: `c` para `customers`, não `a`, `b`).
+- Indentação de 4 espaços; cláusulas principais em linhas separadas.
+
+## Segurança e Performance
+- NUNCA usar `SELECT *` em código de produção — listar colunas explicitamente.
+- Sempre adicionar `LIMIT` em queries exploratórias para evitar sobrecarga.
+- Preferir CTEs (`WITH`) a subqueries aninhadas para legibilidade.
+- Verificar a existência de índices antes de sugerir queries em tabelas grandes.
+- Antes de queries destrutivas (DELETE/UPDATE/DROP), gerar a versão SELECT equivalente para revisão.
+
+## Documentação de Queries
+- Adicionar comentário de cabeçalho em queries complexas:
+  -- Objetivo: ...
+  -- Tabelas envolvidas: ...
+  -- Filtros principais: ...
+  -- Autor / Data: ...
+
+---
+
+# ============================================================
+# 4. DAX (POWER BI) — BOAS PRÁTICAS
+# ============================================================
+
+## Estilo e Formatação
+- Formatar expressões DAX com uma cláusula por linha (padrão DAX Formatter).
+- Nomes de medidas em PascalCase e sempre entre colchetes quando referenciadas.
+- Prefixar medidas calculadas com categoria quando relevante (ex: `Vendas Total`, `Vendas YTD`).
+- Separar medidas base de medidas derivadas em tabelas de medidas distintas.
+
+## Performance
+- Preferir funções de iteração (`SUMX`, `AVERAGEX`) somente quando necessário; usar `SUM`, `AVERAGE` quando possível.
+- Evitar `FILTER` dentro de `CALCULATE` com tabelas inteiras — preferir predicados diretos.
+- Usar `DIVIDE(numerador, denominador, 0)` ao invés de `/` para evitar erros de divisão por zero.
+- Evitar medidas que referenciam outras medidas em cadeia longa — documentar dependências.
+
+## Documentação de Medidas
+- Toda medida nova deve ter descrição preenchida no campo "Descrição" do Power BI.
+- Ao criar medidas no Cline, sempre gerar bloco de comentário explicando a lógica.
+
+---
+
+# ============================================================
+# 5. DOCUMENTAÇÃO BASEADA NO PROJETO
+# ============================================================
+
+## Geração Automática
+- Ao criar ou modificar um módulo Python, atualizar o docstring do módulo.
+- Docstrings no padrão Google Style:
+  def funcao(param: tipo) -> tipo:
+      """Descrição curta.
+
+      Args:
+          param: Descrição do parâmetro.
+
+      Returns:
+          Descrição do retorno.
+
+      Raises:
+          ValueError: Quando...
+      """
+- Para notebooks Jupyter, adicionar célula Markdown de cabeçalho com: objetivo, inputs esperados, outputs gerados e dependências.
+
+## README e Estrutura
+- Todo projeto deve ter `README.md` com: descrição, pré-requisitos, instalação, uso básico e estrutura de pastas.
+- Manter um `CHANGELOG.md` para alterações relevantes.
+- Ao criar novos arquivos ou pastas, verificar se a estrutura do projeto está documentada no README.
+
+## Rastreabilidade de Dados
+- Documentar origem dos dados (fonte, data de extração, transformações aplicadas).
+- Manter arquivo `data_dictionary.md` ou similar para projetos com múltiplas tabelas.
+
+---
+
+# ============================================================
+# 6. SEGURANÇA E BOAS PRÁTICAS GERAIS
+# ============================================================
+
+- NUNCA incluir credenciais, senhas, tokens ou connection strings em código — usar variáveis de ambiente ou `.env` (com `.env` no `.gitignore`).
+- Ao identificar dados sensíveis (CPF, e-mail, financeiro) no projeto, alertar e sugerir anonimização/mascaramento.
+- Antes de instalar novas bibliotecas, verificar se já existe equivalente no projeto ou na stdlib.
+- Preferir soluções que não criem dependências desnecessárias.
+- Commits devem ser atômicos e mensagens no padrão: `tipo(escopo): descrição` (Conventional Commits).
+
+---
+
+# ============================================================
+# 7. MARKDOWN — DOCUMENTAÇÃO, PREVIEW E EXPORTAÇÃO PDF
+# ============================================================
+
+## Estilo e Formatação Geral
+- Sempre adicionar uma linha em branco antes e depois de títulos, listas, blocos de código e tabelas.
+- Usar hierarquia de títulos consistente: `#` apenas para o título principal do documento; `##` para seções; `###` para subseções. Nunca pular níveis.
+- Linhas de até 100 caracteres para melhor leitura no editor; quebrar parágrafos longos.
+- Preferir listas com `-` (hífen) a `*` para uniformidade.
+- Usar `**negrito**` para termos importantes e `_itálico_` para ênfase leve ou termos técnicos na primeira ocorrência.
+- Nunca deixar links sem texto descritivo — preferir `[texto descritivo](url)` a URLs soltas.
+
+## Estrutura de Documentos
+- Todo documento Markdown deve começar com um cabeçalho YAML frontmatter quando for exportado para PDF:
+  ```yaml
+  ---
+  title: "Título do Documento"
+  author: "Nome"
+  date: "AAAA-MM-DD"
+  description: "Resumo breve do conteúdo"
+  ---
+  ```
+- Incluir sumário (Table of Contents) em documentos com mais de 4 seções, usando links internos:
+  ```markdown
+  ## Sumário
+  - [Seção 1](#secao-1)
+  - [Seção 2](#secao-2)
+  ```
+- Finalizar documentos longos com uma seção `## Referências` ou `## Links Úteis` quando aplicável.
+
+## Blocos de Código
+- Sempre especificar a linguagem no bloco de código para syntax highlighting correto no preview e PDF:
+  ```python, ```sql, ```dax, ```bash, ```yaml, ```json
+- Usar código inline (`backticks`) apenas para: nomes de arquivos, variáveis, comandos curtos e valores literais.
+- Para outputs de terminal ou logs, usar ```text ou ```console.
+
+## Tabelas
+- Sempre alinhar colunas com espaços para legibilidade no editor raw.
+- Incluir linha de cabeçalho e separador obrigatoriamente.
+- Para tabelas com mais de 5 colunas, avaliar se um formato de lista descritiva não seria mais legível.
+- Exemplo de tabela bem formatada:
+  ```markdown
+  | Coluna A     | Coluna B     | Descrição              |
+  |--------------|--------------|------------------------|
+  | valor_1      | valor_2      | Descrição do registro  |
+  ```
+
+## Imagens e Diagramas
+- Sempre adicionar texto alternativo descritivo: `![Descrição da imagem](caminho/imagem.png)`.
+- Preferir caminhos relativos para imagens — nunca URLs externas em documentação offline.
+- Para diagramas, preferir blocos Mermaid (suportado por extensões de preview e PDF):
+  ```mermaid
+  flowchart TD
+      A[Início] --> B{Condição}
+      B -- Sim --> C[Ação]
+      B -- Não --> D[Fim]
+  ```
+
+## Compatibilidade com Preview e PDF
+- Evitar HTML inline (`<br>`, `<div>`, etc.) — prejudica portabilidade entre extensões.
+- Não usar recursos específicos de uma única extensão (ex: admonitions do MkDocs em documento que será exportado pelo Markdown PDF).
+- Testar visualmente no preview antes de exportar para PDF.
+- Para quebras de página no PDF, usar comentário HTML padrão suportado pela maioria das extensões:
+  `<div style="page-break-after: always;"></div>`
+- Manter imagens em pasta `/assets` ou `/images` relativa ao documento para que o PDF as encontre corretamente.
+
+## Documentação de Projetos de Dados
+- Para notebooks e pipelines, documentar sempre: **Objetivo**, **Fonte dos dados**, **Transformações aplicadas**, **Output esperado**.
+- Data dictionaries devem usar tabelas Markdown padronizadas:
+  ```markdown
+  | Campo        | Tipo    | Descrição                  | Exemplo     |
+  |--------------|---------|----------------------------|-------------|
+  | id_cliente   | INTEGER | Identificador único        | 10234       |
+  | nome         | VARCHAR | Nome completo do cliente   | João Silva  |
+  ```
+- Relatórios analíticos devem seguir estrutura: Contexto → Metodologia → Resultados → Conclusões → Próximos Passos.
+
+## Convenções de Nomenclatura de Arquivos
+- Nomes de arquivos em `kebab-case`: `analise-vendas-2024.md`, `dicionario-dados.md`.
+- Prefixar com data quando o documento for versionado por tempo: `2024-03-relatorio-mensal.md`.
+- Manter índice `README.md` em pastas com múltiplos documentos.
+
+---
+
+# ============================================================
+# 8. FLUXO DE TRABALHO COM O CLINE
+# ============================================================
+
+- Ao iniciar uma tarefa nova, perguntar se há contexto adicional relevante (ex: schema do banco, dicionário de dados, exemplos de input/output).
+- Ao finalizar uma tarefa, listar: o que foi feito, arquivos modificados e próximos passos sugeridos.
+- Se uma tarefa envolver mais de 3 arquivos ou mais de 100 linhas de código novo, propor um plano antes de executar.
+- Priorizar sempre a consistência com o estilo e padrões já existentes no projeto.
+
+---
+
+# ============================================================
+# 9. MENSAGENS DE COMMIT — CONVENTIONAL COMMITS
+# ============================================================
+
+## Formato
+- Usar o padrão **Conventional Commits** (https://www.conventionalcommits.org/): `tipo: descrição`
+- Tipos permitidos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- Manter apenas **uma linha** com menos de **72 caracteres**
+- Escrever em **Português Brasileiro**
+- Usar o **modo imperativo** (ex: "Adicionar", "Corrigir", "Atualizar")
+- Usar emojis do **Gitmoji** (https://gitmoji.dev/) ao final da mensagem
+
+## Exemplos
+- `feat: adicionar nova funcionalidade de login 🎉`
+- `fix: corrigir método de validação de formulário 🐛`
+- `docs: atualizar definição DDL do banco de dados 📚`
