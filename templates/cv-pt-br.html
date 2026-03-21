@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabiano Fonseca - Currículo e Portfólio Completo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cv-primary: #1a3a5a;
+            --cv-accent: #3498db;
+            --port-bg: #0a2d4a;
+            --port-blue: #33a1fd;
+            --text-dark: #333;
+            --text-light: #ffffff;
+        }
+
+        body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: var(--text-dark); line-height: 1.4; }
+
+        /* --- ESTILOS DO CV --- */
+        .cv-section { max-width: 1000px; margin: 0 auto; background: white; display: grid; grid-template-columns: 300px 1fr; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .cv-sidebar { background-color: var(--cv-primary); color: white; padding: 30px 20px; }
+        .cv-sidebar h2 { font-size: 1rem; border-bottom: 2px solid var(--cv-accent); padding-bottom: 6px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .cv-main { padding: 35px; }
+        .cv-main h1 { color: var(--cv-primary); font-size: 2.2rem; margin-bottom: 5px; text-transform: uppercase; font-weight: 900; }
+        .cv-headline { color: var(--cv-accent); font-weight: bold; font-size: 1rem; margin-bottom: 20px; }
+        .section-title { border-left: 5px solid var(--cv-accent); padding-left: 12px; color: var(--cv-primary); text-transform: uppercase; font-size: 1.1rem; margin-top: 25px; margin-bottom: 12px; font-weight: 900; }
+        
+        .job-block { margin-bottom: 20px; page-break-inside: avoid; }
+        .job-header { display: flex; justify-content: space-between; font-weight: 900; color: var(--cv-primary); font-size: 0.95rem; }
+        .job-company { color: var(--cv-accent); font-style: italic; font-weight: 700; display: block; margin-bottom: 3px; font-size: 0.9rem; }
+        .cv-main ul { padding-left: 18px; margin-top: 5px; }
+        .cv-main li { margin-bottom: 4px; font-size: 0.9rem; text-align: justify; }
+
+        .skill-group { margin-bottom: 15px; }
+        .skill-tag { 
+            display: inline-block; 
+            background: rgba(255,255,255,0.12); 
+            padding: 3px 8px; 
+            margin: 2px; 
+            border-radius: 4px; 
+            font-size: 0.72rem; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- ESTILOS DO PORTFÓLIO --- */
+        .portfolio-section { page-break-before: always; background-color: var(--port-bg); color: var(--text-light); padding: 50px 20px; }
+        .portfolio-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 30px; }
+        .port-sidebar { background-color: rgba(255, 255, 255, 0.08); padding: 25px; border-radius: 8px; height: fit-content; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .port-avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--port-blue); margin-bottom: 15px; object-fit: cover; }
+
+        .project-card { display: flex; background: rgba(255, 255, 255, 0.05); margin-bottom: 25px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); page-break-inside: avoid; }
+        .project-img-container { width: 35% !important; min-width: 35% !important; max-width: 35% !important; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .project-img-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-info { padding: 15px; flex: 1; }
+        .project-info h3 { color: var(--port-blue); margin-top: 0; font-size: 1.1rem; }
+        .project-info p { font-size: 0.82rem; margin-bottom: 8px; text-align: justify; color: #e0e0e0; }
+        .project-link { display: inline-block; background: var(--port-blue); color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; }
+
+        /* --- AJUSTES DE IMPRESSÃO --- */
+        @media print {
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cv-section { box-shadow: none; width: 100%; max-width: 100%; }
+            .portfolio-section { background-color: #0a2d4a !important; padding: 30px 10px; }
+            .cv-sidebar { background-color: #1a3a5a !important; }
+            .project-card { display: flex !important; flex-direction: row !important; }
+            .project-img-container { width: 35% !important; min-width: 35% !important; }
+            .project-img-container img { width: 100% !important; height: auto !important; max-height: 180px; }
+            a[href]:after { content: none !important; }
+        }
+
+        @media (max-width: 800px) {
+            .cv-section, .portfolio-container { grid-template-columns: 1fr; }
+            .project-card { flex-direction: column; }
+            .project-img-container { width: 100% !important; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-section">
+        <aside class="cv-sidebar">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-chart-pie fa-3x" style="color: var(--cv-accent)"></i>
+            </div>
+            
+            <h2>Contato</h2>
+            <p style="font-size:0.85rem"><i class="fas fa-map-marker-alt"></i> São Luís, Maranhão</p>
+            <p style="font-size:0.85rem"><i class="fas fa-phone"></i> +55 98 9 9202-3224</p>
+            <p style="font-size:0.85rem"><i class="fas fa-envelope"></i> fsanfo@gmail.com</p>
+            <p style="font-size:0.85rem"><i class="fab fa-linkedin"></i> linkedin.com/in/fsanfo/</p>
+            
+            <h2>Idiomas</h2>
+            <p style="font-size:0.85rem"><strong>Inglês:</strong> Avançado<br><strong>Português:</strong> Nativo</p>
+
+            <h2>Habilidades Técnicas</h2>
+            <div class="skill-group">
+                <div class="skill-tag">Microsoft Power BI</div>
+                <div class="skill-tag">Microsoft Fabric</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">SQL (PL/SQL, T-SQL)</div>
+                <div class="skill-tag">Oracle</div>
+                <div class="skill-tag">SQL Server</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Oracle SQL Developer</div>
+                <div class="skill-tag">Governança de Dados</div>
+                <div class="skill-tag">Padrões IBCS</div>
+                <div class="skill-tag">Otimização DAX</div>
+                <div class="skill-tag">ERP Analytics</div>
+                <div class="skill-tag">PHP (Laravel, Codeigniter)</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">JavaScript / jQuery</div>
+                <div class="skill-tag">CSS / HTML5</div>
+                <div class="skill-tag">Linux</div>
+                <div class="skill-tag">Sistemas Operacionais</div>
+            </div>
+
+            <h2>Formação</h2>
+            <p style="font-size:0.8rem"><strong>MBA em Business Intelligence</strong><br>IPOG (2022 - 2024)</p>
+            <p style="font-size:0.8rem"><strong>MBA em Finanças e Auditoria</strong><br>FGV (2015 - 2016)</p>
+            <p style="font-size:0.8rem"><strong>B.S. em Ciência da Computação</strong><br>UFMA (1995 - 2003)</p>
+        </aside>
+
+        <main class="cv-main">
+            <h1>Fabiano Fonseca</h1>
+            <p class="cv-headline">Gerente de BI | Transformando Dados em Motores de Crescimento Estratégico</p>
+            
+            <div class="section-title">Resumo Profissional</div>
+            <p style="font-size: 0.9rem;">Líder estratégico com mais de 15 anos de experiência integrando tecnologia e estratégia. Especialista em estruturar departamentos de BI do zero, reduzindo o tempo de geração de relatórios em 60% e criando ecossistemas de referência para decisões corporativas. Experiente em modernização de ERPs, governança de dados e visualização de alto impacto focada em ROI e eficiência operacional.</p>
+
+            <div class="section-title">Experiência Profissional</div>
+            
+            <div class="job-block">
+                <div class="job-header"><span>Consultor de Business Intelligence</span><span>04/2025 – Presente</span></div>
+                <span class="job-company">Consultoria Independente</span>
+                <ul>
+                    <li>Estruturação de projetos de BI personalizados, reduzindo o tempo de análise executiva em 40% via KPIs estratégicos.</li>
+                    <li>Definição de arquiteturas analíticas integradas com ERPs para visibilidade em tempo real.</li>
+                    <li>Implementação de processos de governança de dados para aumentar a confiabilidade da informação.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Gerente de Business Intelligence</span><span>09/2022 – 04/2025</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Liderança na criação do departamento de BI do zero, entregando mais de 60 dashboards estratégicos.</li>
+                    <li>Automação de processos manuais via Power BI + ERP, reduzindo o tempo de reporte em 60%.</li>
+                    <li>Padronização da visualização de dados com IBCS, melhorando a comunicação com o C-Level.</li>
+                    <li>Suporte a todas as áreas (Vendas, Estoque, Financeiro) com métricas de desempenho customizadas.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Gerente de Sistemas</span><span>09/2014 – 10/2022</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Liderança na modernização e integração dos ERPs corporativos, elevando a produtividade administrativa.</li>
+                    <li>Implantação de sistemas web para automação de processos internos, reduzindo drasticamente erros operacionais.</li>
+                    <li>Gestão de equipes técnicas multidisciplinares e uso de data mining para reestruturação de mix de produtos.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Coordenador de Desenvolvimento / Analista de Sistemas</span><span>12/2010 – 08/2014</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Gestão do ciclo de vida de desenvolvimento e customizações internas de sistemas.</li>
+                    <li>Otimização de rotinas de banco de dados e performance para ambientes de alta concorrência.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Analista de Negócios Sênior</span><span>04/2008 – 12/2010</span></div>
+                <span class="job-company">TOTVS</span>
+                <ul>
+                    <li>Implantação e suporte do ERP TOTVS em mais de 10 unidades operacionais.</li>
+                    <li>Tradução de necessidades complexas em soluções funcionais, eliminando gargalos operacionais.</li>
+                </ul>
+            </div>
+
+            <!-- <div class="job-block">
+                <div class="job-header"><span>Analista de Sistemas</span><span>2004 – 2008</span></div>
+                <span class="job-company">Alumar (Alcoa/Rio Tinto/South32)</span>
+                <ul>
+                    <li>Desenvolvimento de soluções analíticas e técnicas para áreas industriais complexas.</li>
+                    <li>Gestão de migrações de sistemas legados garantindo a integridade dos dados históricos.</li>
+                </ul>
+            </div> -->
+        </main>
+    </div>
+
+    <div class="portfolio-section">
+        <div class="portfolio-container">
+            <aside class="port-sidebar">
+                <img src="../assets/avatar-anime-3.png" alt="Avatar" class="port-avatar">
+                <h2 style="color: var(--port-blue); font-size: 1.1rem;">PORTFÓLIO</h2>
+                <p style="font-size: 0.8rem; color: #c5c5c5;">Destaques de DataViz e Modelagem</p>
+                <div style="margin-top: 20px; text-align: left; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                    <p><i class="fab fa-whatsapp" style="color:var(--port-blue)"></i> +55 98 99202-3224</p>
+                    <p><i class="fas fa-envelope" style="color:var(--port-blue)"></i> fsanfo@gmail.com</p>
+                    <p><i class="fas fa-globe" style="color:var(--port-blue)"></i> <a href="https://fsanfo.github.io/portfolio" target="_blank" style="color:var(--port-blue); text-decoration:none;">fsanfo.github.io/portfolio</a></p>
+                </div>
+            </aside>
+
+            <main>
+                <h1 style="text-transform: uppercase; border-bottom: 2px solid var(--port-blue); padding-bottom: 10px; font-size: 1.6rem;">Projetos Selecionados</h1>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dune-chart.png" alt="Dune Chart"></div>
+                    <div class="project-info">
+                        <h3>Dune Chart: Storytelling com Dados</h3>
+                        <p>Inspirado nas dunas dos Lençóis Maranhenses, este gráfico transforma linhas nativas em uma visualização YoY% rica via SVG, onde a forma e cor narram a performance mensal.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dj-equalizer.png" alt="DJ Equalizer"></div>
+                    <div class="project-info">
+                        <h3>DJ Equalizer: Dados em Som</h3>
+                        <p>Uma metáfora criativa de um console de DJ onde os "Volumes" representam valores e o "Gain" exibe variações YoY, facilitando a exploração intuitiva para stakeholders.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/ibcs-1.png" alt="IBCS"></div>
+                    <div class="project-info">
+                        <h3>Padrões IBCS no Power BI</h3>
+                        <p>Implementação dos padrões globais de comunicação de negócios usando medidas SVG e Visual Calculations para máxima clareza nos relatórios executivos.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/parameter-field.png" alt="Parameter Fields"></div>
+                    <div class="project-info">
+                        <h3>Campos de Parâmetros Avançados</h3>
+                        <p>Alternância dinâmica de contextos de análise (Vendas vs Margem vs Unidades) via Field Parameters, melhorando a usabilidade e reduzindo a carga cognitiva.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/calendar-oracle.png" alt="Oracle Calendar"></div>
+                    <div class="project-info">
+                        <h3>Dim Calendário: Oracle PL/SQL</h3>
+                        <p>Criação de uma dimensão tempo robusta diretamente na camada de banco de dados via PL/SQL e Jobs, garantindo consistência em todo o DW.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/greater-expectations.png" alt="Great Expectations"></div>
+                    <div class="project-info">
+                        <h3>Qualidade e Observabilidade de Dados</h3>
+                        <p>Implementação do framework Great Expectations para monitoramento proativo de anomalias, garantindo a integridade dos dados antes da camada analítica.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dax-optimizer.png" alt="DAX Optimizer"></div>
+                    <div class="project-info">
+                        <h3>Otimização de Performance DAX</h3>
+                        <p>Melhoria de 70% na performance de CPU através de otimização de modelos semânticos e tuning avançado de DAX em cenários reais complexos.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

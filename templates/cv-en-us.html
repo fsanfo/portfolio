@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabiano Fonseca - Full Resume & Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cv-primary: #1a3a5a;
+            --cv-accent: #3498db;
+            --port-bg: #0a2d4a;
+            --port-blue: #33a1fd;
+            --text-dark: #333;
+            --text-light: #ffffff;
+        }
+
+        body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: var(--text-dark); line-height: 1.4; }
+
+        /* --- CV STYLES --- */
+        .cv-section { max-width: 1000px; margin: 0 auto; background: white; display: grid; grid-template-columns: 300px 1fr; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .cv-sidebar { background-color: var(--cv-primary); color: white; padding: 30px 20px; }
+        .cv-sidebar h2 { font-size: 1rem; border-bottom: 2px solid var(--cv-accent); padding-bottom: 6px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .cv-main { padding: 35px; }
+        .cv-main h1 { color: var(--cv-primary); font-size: 2.2rem; margin-bottom: 5px; text-transform: uppercase; font-weight: 900; }
+        .cv-headline { color: var(--cv-accent); font-weight: bold; font-size: 1rem; margin-bottom: 20px; }
+        .section-title { border-left: 5px solid var(--cv-accent); padding-left: 12px; color: var(--cv-primary); text-transform: uppercase; font-size: 1.1rem; margin-top: 25px; margin-bottom: 12px; font-weight: 900; }
+        
+        .job-block { margin-bottom: 20px; page-break-inside: avoid; }
+        .job-header { display: flex; justify-content: space-between; font-weight: 900; color: var(--cv-primary); font-size: 0.95rem; }
+        .job-company { color: var(--cv-accent); font-style: italic; font-weight: 700; display: block; margin-bottom: 3px; font-size: 0.9rem; }
+        .cv-main ul { padding-left: 18px; margin-top: 5px; }
+        .cv-main li { margin-bottom: 4px; font-size: 0.9rem; text-align: justify; }
+
+        /* Estilo das Tags de Habilidades expandido */
+        .skill-group { margin-bottom: 15px; }
+        .skill-tag { 
+            display: inline-block; 
+            background: rgba(255,255,255,0.12); 
+            padding: 3px 8px; 
+            margin: 2px; 
+            border-radius: 4px; 
+            font-size: 0.72rem; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- PORTFOLIO STYLES --- */
+        .portfolio-section { page-break-before: always; background-color: var(--port-bg); color: var(--text-light); padding: 50px 20px; }
+        .portfolio-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 30px; }
+        .port-sidebar { background-color: rgba(255, 255, 255, 0.08); padding: 25px; border-radius: 8px; height: fit-content; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .port-avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--port-blue); margin-bottom: 15px; object-fit: cover; }
+
+        .project-card { display: flex; background: rgba(255, 255, 255, 0.05); margin-bottom: 25px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); page-break-inside: avoid; }
+        .project-img-container { width: 35% !important; min-width: 35% !important; max-width: 35% !important; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .project-img-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-info { padding: 15px; flex: 1; }
+        .project-info h3 { color: var(--port-blue); margin-top: 0; font-size: 1.1rem; }
+        .project-info p { font-size: 0.82rem; margin-bottom: 8px; }
+        .project-link { display: inline-block; background: var(--port-blue); color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; transition: 0.3s; }
+
+        /* --- PRINT FIXES --- */
+        @media print {
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cv-section { box-shadow: none; width: 100%; max-width: 100%; }
+            .portfolio-section { background-color: #0a2d4a !important; padding: 30px 10px; }
+            .cv-sidebar { background-color: #1a3a5a !important; }
+            .project-card { display: flex !important; flex-direction: row !important; }
+            .project-img-container { width: 35% !important; min-width: 35% !important; }
+            .project-img-container img { width: 100% !important; height: auto !important; max-height: 180px; }
+            a[href]:after { content: none !important; }
+        }
+
+        @media (max-width: 800px) {
+            .cv-section, .portfolio-container { grid-template-columns: 1fr; }
+            .project-card { flex-direction: column; }
+            .project-img-container { width: 100% !important; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-section">
+        <aside class="cv-sidebar">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-database fa-3x" style="color: var(--cv-accent)"></i>
+            </div>
+            
+            <h2>Contact</h2>
+            <p style="font-size:0.85rem"><i class="fas fa-map-marker-alt"></i> São Luís, Brazil</p>
+            <p style="font-size:0.85rem"><i class="fas fa-phone"></i> +55 98 9 9202-3224</p>
+            <p style="font-size:0.85rem"><i class="fas fa-envelope"></i> fsanfo@gmail.com</p>
+            <p style="font-size:0.85rem"><i class="fab fa-linkedin"></i> linkedin.com/in/fsanfo/</p>
+            
+            <h2>Languages</h2>
+            <p style="font-size:0.85rem"><strong>English:</strong> Advanced<br><strong>Portuguese:</strong> Native</p>
+
+            <h2>Technical Skills</h2>
+            <div class="skill-group">
+                <div class="skill-tag">Microsoft Power BI</div>
+                <div class="skill-tag">Microsoft Fabric</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">SQL (PL/SQL, T-SQL)</div>
+                <div class="skill-tag">Oracle</div>
+                <div class="skill-tag">SQL Server</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Oracle SQL Developer</div>
+                <div class="skill-tag">Data Governance</div>
+                <div class="skill-tag">IBCS Standards</div>
+                <div class="skill-tag">DAX Optimization</div>
+                <div class="skill-tag">ERP Analytics</div>
+                <div class="skill-tag">PHP (Laravel, Codeigniter)</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">JavaScript / jQuery</div>
+                <div class="skill-tag">CSS</div>
+                <div class="skill-tag">Linux</div>
+                <div class="skill-tag">Systems Operational</div>
+            </div>
+
+            <h2>Education</h2>
+            <p style="font-size:0.8rem"><strong>MBA in BI</strong><br>IPOG (2022 - 2024)</p>
+            <p style="font-size:0.8rem"><strong>MBA in Finance</strong><br>FGV (2015 - 2016)</p>
+            <p style="font-size:0.8rem"><strong>B.S. in Computer Science</strong><br>UFMA</p>
+        </aside>
+
+        <main class="cv-main">
+            <h1>Fabiano Fonseca</h1>
+            <p class="cv-headline">BI Manager | Turning Data into Strategic Business Engine</p>
+            
+            <div class="section-title">Summary</div>
+            <p style="font-size: 0.9rem;">Strategic leader with over 15 years of experience integrating technology and strategy. Specialized in building BI departments from scratch, reducing report generation time by 60% and creating reference ecosystems for corporate decision-making. Expert in ERP modernization, data governance, and high-impact visualization.</p>
+
+            <div class="section-title">Professional Experience</div>
+            
+            <div class="job-block">
+                <div class="job-header"><span>Business Intelligence Consultant</span><span>04/2025 – Present</span></div>
+                <span class="job-company">Independent Consultancy</span>
+                <ul>
+                    <li>Structures custom BI projects, reducing executive analysis time by 40%.</li>
+                    <li>Defines integrated analytical architectures with ERPs for real-time visibility.</li>
+                    <li>Implements data governance processes to enhance information reliability.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Business Intelligence Manager</span><span>09/2022 – 04/2025</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Created the BI department from scratch, delivering 60+ strategic dashboards.</li>
+                    <li>Automated manual processes using Power BI + ERP, cutting reporting time by 60%.</li>
+                    <li>Standardized visualization using IBCS standards to improve C-level communication.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Systems Manager</span><span>09/2014 – 10/2022</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Modernized corporate ERP systems, boosting administrative and logistic productivity.</li>
+                    <li>Deployed web systems to automate internal processes and reduce operational errors.</li>
+                    <li>Managed multidisciplinary teams and used data mining for product mix restructuring.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Development Coordinator / Systems Analyst</span><span>12/2010 – 08/2014</span></div>
+                <span class="job-company">Potiguar Home Center</span>
+                <ul>
+                    <li>Developed internal systems to automate manual routines, saving operational hours.</li>
+                    <li>Optimized legacy system performance and stability, preparing for digital growth.</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-header"><span>Senior Business Analyst</span><span>04/2008 – 12/2010</span></div>
+                <span class="job-company">TOTVS</span>
+                <ul>
+                    <li>Implemented TOTVS ERP across 10+ operational units, ensuring business alignment.</li>
+                    <li>Translated complex needs into functional solutions, eliminating operational bottlenecks.</li>
+                </ul>
+            </div>
+
+            <!-- <div class="job-block">
+                <div class="job-header"><span>Systems Analyst</span><span>2004 – 2008</span></div>
+                <span class="job-company">Alumar (Alcoa/Rio Tinto/South32)</span>
+                <ul>
+                    <li>Developed analytical and technical solutions for complex industrial areas.</li>
+                    <li>Managed legacy migrations ensuring high data integrity and minimal downtime.</li>
+                </ul>
+            </div> -->
+        </main>
+    </div>
+
+    <div class="portfolio-section">
+        <div class="portfolio-container">
+            <aside class="port-sidebar">
+                <img src="../assets/avatar-anime-3.png" alt="Avatar" class="port-avatar">
+                <h2 style="color: var(--port-blue); font-size: 1.1rem;">PORTFOLIO</h2>
+                <p style="font-size: 0.8rem; color: #c5c5c5;">DataViz & Modeling Highlights</p>
+                <div style="margin-top: 20px; text-align: left; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                    <p><i class="fab fa-whatsapp" style="color:var(--port-blue)"></i> +55 98 99202-3224</p>
+                    <p><i class="fas fa-envelope" style="color:var(--port-blue)"></i> fsanfo@gmail.com</p>
+                    <p><i class="fas fa-globe" style="color:var(--port-blue)"></i> <a href="https://fsanfo.github.io/portfolio" target="_blank" style="color:var(--port-blue); text-decoration:none;">fsanfo.github.io/portfolio</a></p>
+                </div>
+            </aside>
+
+            <main>
+                <h1 style="text-transform: uppercase; border-bottom: 2px solid var(--port-blue); padding-bottom: 10px; font-size: 1.6rem;">Selected Projects</h1>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dune-chart.png" alt="Dune Chart"></div>
+                    <div class="project-info">
+                        <h3>Dune Chart: Maranhão Inspired</h3>
+                        <p>Transforms native Power BI lines into an SVG performance visualization where color and shape tell the monthly story.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dj-equalizer.png" alt="DJ Equalizer"></div>
+                    <div class="project-info">
+                        <h3>DJ Equalizer: Mixing Data</h3>
+                        <p>A creative metaphor of a console to represent business volumes and YoY gains intuitively.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/ibcs-1.png" alt="IBCS"></div>
+                    <div class="project-info">
+                        <h3>IBCS Standards in Power BI</h3>
+                        <p>Application of global communication standards using SVG and Visual Calculations for clarity.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/parameter-field.png" alt="Parameter Fields"></div>
+                    <div class="project-info">
+                        <h3>Advanced Parameter Fields</h3>
+                        <p>Dynamic context switching for users, improving usability and reducing dashboard clutter.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/calendar-oracle.png" alt="Oracle Calendar"></div>
+                    <div class="project-info">
+                        <h3>Dim Calendar: Oracle PL/SQL</h3>
+                        <p>Robust calendar dimension built directly in Oracle using PL/SQL and Jobs for DW consistency.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/greater-expectations.png" alt="Great Expectations"></div>
+                    <div class="project-info">
+                        <h3>Data Quality & Observability</h3>
+                        <p>Implementation of the Great Expectations framework for proactive anomaly detection.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/dax-optimizer.png" alt="DAX Optimizer"></div>
+                    <div class="project-info">
+                        <h3>DAX Performance Tuning</h3>
+                        <p>Resulting in 70% boost in CPU performance through advanced semantic model optimization.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">View Details</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
