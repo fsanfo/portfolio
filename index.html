@@ -1,585 +1,888 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Projetos | Fabiano Fonseca</title>
-    <!-- Incluindo Font Awesome para ícones de contato -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Portfólio de Business Intelligence - Fabiano Fonseca. Especialista em Transformação Digital e Power BI.">
+    <title>Fabiano Fonseca | Consultor de Business Intelligence</title>
     <style>
-        /* Estilos baseados na paleta e layout do seu CV */
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap' );
-
         :root {
-            --bg-dark: #0a2d4a; /* Cor de fundo principal */
-            --primary-blue: #33a1fd; /* Cor de destaque principal */
-            --text-light: #ffffff;
-            --text-muted: #c5c5c5;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-bg-hover: rgba(255, 255, 255, 0.1);
+            --graphite: #353535;
+            --stormy-teal: #3c6e71;
+            --white: #ffffff;
+            --alabaster-grey: #d9d9d9;
+            --yale-blue: #284b63;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Reset e Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 40px 20px;
-        }
-        
-        /* Novo Container para layout de duas colunas (sidebar + conteúdo) */
-        .page-container {
-            max-width: 1200px; /* Aumentando a largura máxima para acomodar a sidebar */
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr; /* Padrão mobile: uma coluna */
-            gap: 40px;
-        }
-        
-        /* Estilos da Sidebar (Informações Pessoais e Contato) */
-        .sidebar {
-            background-color: rgba(255, 255, 255, 0.08);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            height: fit-content;
-        }
-
-        .personal-info {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-blue);
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(51, 161, 253, 0.5); /* Sombra suave de destaque */
-        }
-
-        .personal-info h2 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-light);
-            margin-bottom: 5px;
-        }
-
-        .personal-info p {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        /* Estilos da Seção de Contato */
-        .contact-info {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-info h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .contact-item {
-            margin-bottom: 15px;
-        }
-
-        .contact-item a {
-            display: flex;
-            align-items: center;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-blue);
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-            width: 30px;
-            text-align: center;
-            margin-right: 10px;
-            color: var(--primary-blue);
-        }
-
-        /* Estilos da Seção de Curriculum Vitae */
-        .cv-section {
-            padding-top: 20px;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .cv-section h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        /* Estilos do Conteúdo Principal (Projetos) */
-        .main-content {
-            padding-top: 0;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 0 20px;
-        }
-        .header h1 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-        .header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
+            color: var(--graphite);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 35px;
+
+        body.modal-open {
+            overflow: hidden;
+            padding-right: var(--scrollbar-compensation, 0px);
         }
-        .project {
+
+        h1, h2, h3 { color: var(--yale-blue); line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 15px 25px; }
+
+        /* Espaçamento entre Blocos */
+        section { padding: 120px 0; }
+
+        /* Acessibilidade - Foco */
+        :focus { outline: 3px solid var(--stormy-teal); outline-offset: 4px; }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo { font-weight: 700; font-size: 1.3rem; color: var(--yale-blue); letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a:hover { color: var(--stormy-teal); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--yale-blue) 0%, #1a3242 100%);
+            color: var(--white);
+            padding: 120px 0 40px;
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid var(--stormy-teal);
+            overflow: hidden;
+            margin: 0 auto 30px;
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .avatar-container img { width: 100%; height: 100%; object-fit: cover; }
+        .hero h1 { color: var(--white); font-size: 3rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.25rem; color: var(--alabaster-grey); max-width: 700px; margin: 0 auto; }
+        .hero-actions {
+            margin-top: 28px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .project:hover {
-            background-color: var(--card-bg-hover);
-            transform: translateY(-5px); /* Efeito de elevação sutil */
-        }
-        .project-image {
+        .hero-cv-label {
             text-align: center;
-            overflow: hidden;
-            border-radius: 6px;
-        }
-        .project-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            border: 2px solid var(--primary-blue);
-            transition: transform 0.4s ease;
-        }
-        .project:hover .project-image img {
-            transform: scale(1.05); /* Zoom na imagem ao passar o mouse */
-        }
-
-        .project-content h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin: 0 0 10px 0;
-        }
-        .project-content p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #e0e0e0;
+            color: var(--alabaster-grey);
+            font-style: italic;
+            font-size: 1rem !important;
             margin: 0;
         }
-        .project-link {
-            display: inline-block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: var(--text-light);
-            text-decoration: none;
-            background-color: var(--primary-blue);
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        .hero-cv-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
         }
-        .project-link:hover {
-            background-color: #1e88e5;
-            box-shadow: 0 4px 10px rgba(51, 161, 253, 0.4);
+        .hero-cv-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            /* text-transform: uppercase; */
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .hero-cv-link:hover,
+        .hero-cv-link:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.9);
         }
 
-        .project-tags {
+        /* Seção Sobre */
+        .section-title { font-size: 2.2rem; margin-bottom: 50px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--stormy-teal); }
+        .about-text p { margin-bottom: 25px; font-size: 1.15rem; color: var(--graphite); text-align: justify; }
+        .highlight-box {
+            background-color: #f4f7f8;
+            border-left: 6px solid var(--yale-blue);
+            padding: 40px;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--yale-blue);
+        }
+
+        /* Portfolio Grid */
+        .portfolio { background-color: #fcfcfc; }
+        .portfolio-grid { display: grid; gap: 30px; margin-top: 50px; }
+
+        .articles {
+            background: linear-gradient(180deg, #ffffff 0%, #f4f7f8 100%);
+        }
+
+        .articles-intro {
+            max-width: 760px;
+            color: var(--graphite);
+            margin-top: -20px;
+        }
+
+        .articles-grid {
+            display: grid;
+            gap: 24px;
+            margin-top: 40px;
+            grid-template-columns: 1fr;
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border: 1px solid var(--alabaster-grey);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(40, 75, 99, 0.08);
+            transition: var(--transition);
+        }
+
+        .article-card:hover,
+        .article-card:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(40, 75, 99, 0.14);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            color: var(--yale-blue);
+        }
+
+        .article-content p {
+            color: var(--graphite);
+            font-size: 0.98rem;
+        }
+
+        .article-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 4px;
         }
 
-        .project-tag {
-            font-size: 0.78rem;
-            color: var(--primary-blue);
-            background-color: rgba(51, 161, 253, 0.1);
-            border: 1px solid rgba(51, 161, 253, 0.3);
-            border-radius: 20px;
-            padding: 3px 10px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        .article-tag {
+            background: #edf2f4;
+            color: var(--yale-blue);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
-        .project-tag:hover {
-            background-color: rgba(51, 161, 253, 0.25);
-            color: #fff;
+        .article-link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            background: var(--yale-blue);
+            color: var(--white);
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
-        /* CENTRALIZAÇÃO DO CONTATO PARA TELAS PEQUENAS (Mobile) */
-        @media (max-width: 767px) {
-            .contact-list {
-                /* Centraliza a lista inteira */
-                display: flex;
-                flex-direction: column;
-                align-items: center; 
-            }
-            .contact-item a {
-                /* Centraliza o conteúdo (ícone + texto) dentro de cada item */
-                justify-content: center;
-            }
-            /* Garante que os títulos de seção também estejam centralizados */
-            .sidebar h3 {
-                text-align: center;
-            }
+        .article-link:hover,
+        .article-link:focus {
+            background: var(--stormy-teal);
         }
 
-        /* Layout para telas intermediárias */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .project {
-                flex-direction: row;
-                align-items: center;
-            }
-            .project:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-            .project-image {
-                flex: 0 0 40%;
-            }
-            .project-content {
-                flex: 1;
-            }
+        /* Grid Responsivo */
+        @media (min-width: 320px) { .portfolio-grid { grid-template-columns: 1fr; } }
+        @media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1200px) { .portfolio-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .project-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 380px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 1px solid var(--alabaster-grey);
         }
-        
-        /* Layout para telas maiores: Sidebar e Conteúdo Principal em duas colunas */
-        @media (min-width: 1024px) {
-            .page-container {
-                grid-template-columns: 300px 1fr; /* Sidebar de 300px e Conteúdo Principal */
+
+        .project-img { width: 100%; height: 100%; object-fit: cover; filter: blur(2px); transition: var(--transition); }
+        .project-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(40, 75, 99, 0.25) 20%, rgba(40, 75, 99, 0.92) 100%);
+            display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+            padding: 24px; text-align: left; opacity: 1; transition: var(--transition);
+            z-index: 2;
+        }
+
+        .project-card:hover .project-img,
+        .project-card:focus-within .project-img { filter: blur(0); transform: scale(1.04); }
+        .project-card:hover .project-overlay,
+        .project-card:focus-within .project-overlay { background: linear-gradient(180deg, rgba(40, 75, 99, 0.2) 15%, rgba(40, 75, 99, 0.88) 100%); }
+
+        .project-overlay h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 8px; }
+        .project-overlay p { font-size: 0.95rem; color: var(--alabaster-grey); margin-bottom: 16px; }
+        .btn-trigger { padding: 10px 25px; background: var(--stormy-teal); color: var(--white); border-radius: 4px; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
+
+        /* Estilização da Dialog (Modal) */
+        dialog {
+            border: none;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 66vw;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin: auto;
+        }
+
+        dialog::backdrop { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); }
+
+        .modal-content { display: flex; flex-direction: column; background: var(--white); max-height: 90vh; }
+        .modal-img-container {
+            width: 100%;
+            height: 50vh;
+            background: #eee;
+            position: relative;
+            --logo-mask-left: 16px;
+            --logo-mask-top: 10px;
+            --logo-mask-width: 154px;
+            --logo-mask-height: 36px;
+        }
+        .modal-img-container::before {
+            content: '';
+            position: absolute;
+            top: var(--logo-mask-top);
+            left: var(--logo-mask-left);
+            width: var(--logo-mask-width);
+            height: var(--logo-mask-height);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .modal-img-container img { max-width: 100%; max-height: 100%; width: 100%; height: 100%; object-fit: contain; }
+        .modal-info { padding: 40px; overflow-y: auto; }
+        .modal-header { margin-bottom: 20px; }
+        .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .tag { background: #edf2f4; color: var(--yale-blue); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+        .modal-hashtags { color: var(--stormy-teal); font-weight: 600; font-size: 0.9rem; margin-top: 20px; display: block; }
+        .close-modal { position: absolute; top: 20px; right: 20px; background: var(--white); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 10; transition: var(--transition); }
+        .close-modal:hover { background: var(--alabaster-grey); transform: rotate(90deg); }
+
+        /* Seção Contato */
+        .contact { text-align: center; background-color: var(--white); }
+        .contact-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 60px; }
+        .contact-btn {
+            display: flex; align-items: center; gap: 15px;
+            padding: 20px 40px; background-color: var(--yale-blue); color: var(--white);
+            border-radius: 8px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(40, 75, 99, 0.2);
+        }
+        .contact-btn:hover { background-color: var(--stormy-teal); transform: translateY(-5px); box-shadow: 0 8px 25px rgba(60, 110, 113, 0.3); }
+        .contact-btn svg { width: 28px; height: 28px; fill: currentColor; }
+
+        /* Footer */
+        footer { background-color: var(--graphite); color: var(--white); padding: 60px 0; text-align: center; }
+        .footer-line { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 30px; font-size: 0.85rem; color: var(--alabaster-grey); }
+
+        /* Responsive Fixes */
+        @media (max-width: 1024px) {
+            dialog { max-width: 90vw; }
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 80px 0; }
+        }
+
+        @media (min-width: 768px) {
+            .articles-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1200px) {
+            .articles-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .modal-info { padding: 25px; }
+            .contact-btn { width: 100%; justify-content: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
-            .main-content {
-                padding-top: 0;
-            }
-            
-            /* Ajuste do layout dos projetos para melhor visualização na coluna principal */
-            .project {
-                flex-direction: row;
-                align-items: center;
-            }
-            .project:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-            .project-image {
-                flex: 0 0 40%;
-            }
-            .project-content {
-                flex: 1;
-            }
-            
-            /* Restaura o alinhamento esquerdo do contato na sidebar (para desktop) */
-            .contact-list {
-                align-items: flex-start; 
-            }
-            .contact-item a {
-                justify-content: flex-start;
+
+            .project-img {
+                filter: none;
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="page-container">
-        
-        <!-- Sidebar (Dados Pessoais e Contato) -->
-        <aside class="sidebar">
-            <div class="personal-info">
-                <!-- Avatar Adicionado -->
-                <img src="assets/avatar-linkedin-2.png" alt="Avatar de Fabiano Fonseca" class="avatar">
+    <header role="banner">
+        <nav class="container" aria-label="Navegação principal">
+            <div class="logo">Fabiano Fonseca</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#portfolio">Projetos</a></li>
+                <li><a href="#artigos">Artigos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="avatar-container">
+                    <img src="assets/avatar-linkedin-2.png" alt="Foto de perfil de Fabiano Fonseca" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+                <h1>Fabiano Fonseca</h1>
+                <p>Especialista em Transformação Digital e Consultor de Business Intelligence</p>
+                <div class="hero-actions" aria-label="Links do currículo">
+                    <p class="hero-cv-label">curriculum vitae</p>
+                    <div class="hero-cv-links">
+                        <a class="hero-cv-link" href="cv/FabianoFonsecaResume-pt-BR.pdf" target="_blank" rel="noopener noreferrer" aria-label="Curriculum vitae em português brasileiro">📄 pt-BR</a>
+                        <a class="hero-cv-link" href="cv/FabianoFonsecaResume-en-US.pdf" target="_blank" rel="noopener noreferrer" aria-label="Curriculum vitae em inglês">📄 en-US</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="container">
+            <h2 class="section-title">Sobre Minha Trajetória</h2>
+            <div class="about-text">
+                <p>Minha jornada profissional é marcada por um propósito claro: transformar dados em decisões que movem negócios. Ao longo de mais de 15 anos, enfrentei o desafio recorrente de integrar tecnologia com estratégia, e encontrei na inteligência de negócios o caminho para gerar impacto real.</p>
                 
-                <!-- Dados Pessoais de Identificação -->
-                <h2>Fabiano Fonseca</h2>
-                <p>Especialista em Business Intelligence e DataViz.</p>
-                <p>Transformando dados complexos em histórias visuais acionáveis.</p>
+                <div class="highlight-box">
+                    "Na Potiguar, assumi a missão de estruturar do zero uma área de BI orientada à estratégia. O resultado? Redução de 60% no tempo de geração de relatórios executivos."
+                </div>
+
+                <p>Com MBA em Finanças e outro em Business Intelligence, desenvolvi uma visão holística que conecta números ao negócio. Não penso BI como ferramenta, mas como estratégia: é sobre antecipar o que o cliente ainda nem percebeu e entregar respostas antes que a pergunta chegue.</p>
+
+                <p>Hoje, como consultor, aplico essa bagagem ajudando empresas a estruturarem suas governanças de dados, integrarem sistemas e desenvolverem indicadores que realmente sustentem decisões estratégicas.</p>
             </div>
+        </section>
 
-            <!-- Seção de Contato -->
-            <div class="contact-info">
-                <h3>Entre em Contato</h3>
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <a href="mailto:fsanfo@gmail.com" title="Enviar Email">
-                            <i class="fas fa-envelope"></i>
-                            fsanfo@gmail.com
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="https://wa.me/5598992023224" target="_blank" title="Enviar WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                            +55 98 9 9202-3224
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="https://www.linkedin.com/in/fsanfo" target="_blank" title="Ver LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                            /in/fsanfo
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="https://www.instagram.com/ofabianofonseca" target="_blank" title="Ver Instagram">
-                            <i class="fab fa-instagram"></i>
-                            @ofabianofonseca
-                        </a>
-                    </li>
-                </ul>
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2 class="section-title">Portfólio de Projetos</h2>
+                <div class="portfolio-grid" id="projectGrid">
+                    <article class="project-card" tabindex="0" 
+                        data-title="Painel Executivo de Performance Corporativa"
+                        data-sub="Visão consolidada de indicadores estratégicos para tomada de decisão"
+                        data-img="assets/pbi/compras-painel-de-bordo.png"
+                        data-tags="Business Intelligence, Dashboard Executivo, KPIs, Data Analytics"
+                        data-desc="Dashboard interativo desenvolvido para acompanhamento de indicadores-chave de desempenho em nível corporativo, incluindo vendas, margem, ruptura e compras. Permite análise por departamento e regime contábil."
+                        data-hash="#PowerBI #BusinessIntelligence #DashboardExecutivo #DataDriven #Analytics">
+                        <img src="assets/pbi/compras-painel-de-bordo.png" class="project-img" alt="Painel executivo com indicadores corporativos" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Painel Executivo</h3>
+                            <p>Tomada de decisão estratégica</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="Monitor de Indicadores Comerciais (KPIs)"
+                        data-sub="Acompanhamento de desempenho de vendas, margem e ticket médio"
+                        data-img="assets/pbi/comercial-kpi-cover.png"
+                        data-tags="KPIs Comerciais, Vendas, Performance, Indicadores"
+                        data-desc="Painel analítico focado em indicadores comerciais essenciais, com destaque para crescimento de receita e ticket médio. Inclui comparativos temporais e visualizações de tendência."
+                        data-hash="#KPIs #Vendas #PerformanceComercial #PowerBI #DataAnalytics">
+                        <img src="assets/pbi/comercial-kpi-cover.png" class="project-img" alt="Monitor de indicadores comerciais e vendas" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Monitor Comercial</h3>
+                            <p>Gestão de vendas</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="Dashboard Financeiro com Análise de EBITDA"
+                        data-img="assets/pbi/controladoria-ebitda.png"
+                        data-sub="Visão detalhada da saúde financeira e rentabilidade operacional"
+                        data-tags="Financeiro, EBITDA, DRE, Controladoria"
+                        data-desc="Painel financeiro completo com análise de receitas, custos, despesas e indicadores como EBITDA e lucro líquido. Suporte fundamental para a controladoria e performance econômica."
+                        data-hash="#EBITDA #Financeiro #Controladoria #PowerBI #DataDriven">
+                        <img src="assets/pbi/controladoria-ebitda.png" class="project-img" alt="Dashboard financeiro com análise de EBITDA" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Análise de EBITDA</h3>
+                            <p>Controladoria e saúde financeira</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="Segmentação de Clientes com Modelo RFM"
+                        data-img="assets/pbi/marketing-rfm.png"
+                        data-sub="Análise comportamental para estratégias de marketing e retenção"
+                        data-tags="RFM, Marketing Analytics, CRM, Segmentação"
+                        data-desc="Dashboard de análise RFM (Recência, Frequência e Valor). Identifica perfis como clientes fiéis ou em risco, permitindo ações direcionadas de marketing."
+                        data-hash="#RFM #MarketingAnalytics #CRM #CustomerInsights #PowerBI">
+                        <img src="assets/pbi/marketing-rfm.png" class="project-img" alt="Segmentação de clientes usando modelo RFM" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Modelo RFM</h3>
+                            <p>Segmentação e retenção de clientes</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="E-commerce: Monitoramento de Metas"
+                        data-img="assets/pbi/ecommerce-metas.png"
+                        data-sub="Acompanhamento de metas de vendas e conversão no canal digital"
+                        data-tags="E-commerce, Metas, Conversão, Varejo Digital"
+                        data-desc="Painel focado no controle de metas para operações digitais, com visão de atingimento por canal e categoria. Apoia a agilidade em campanhas."
+                        data-hash="#Ecommerce #Metas #VarejoDigital #PowerBI #Analytics">
+                        <img src="assets/pbi/ecommerce-metas.png" class="project-img" alt="Monitoramento de metas de e-commerce" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Monitor de Metas</h3>
+                            <p>Performance em canais digitais</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="E-commerce: Análise de Vendas"
+                        data-img="assets/pbi/ecommerce-vendas.png"
+                        data-sub="Visão analítica do desempenho de vendas no canal digital"
+                        data-tags="E-commerce, Vendas, Revenue, Varejo Digital"
+                        data-desc="Análise de receita, volume de pedidos e sazonalidade. Focado na otimização do mix comercial e identificação de categorias de alta performance."
+                        data-hash="#Ecommerce #Vendas #PowerBI #DataAnalytics #VarejoDigital">
+                        <img src="assets/pbi/ecommerce-vendas.png" class="project-img" alt="Análise de vendas e receita de e-commerce" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Análise de Vendas</h3>
+                            <p>Mix comercial e volumetria</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="Supply Chain: On-Time Delivery (OTD)"
+                        data-img="assets/pbi/supply-chain-otd.png"
+                        data-sub="Monitoramento do índice de entregas no prazo ao longo da cadeia"
+                        data-tags="Supply Chain, OTD, Logística, Operações"
+                        data-desc="Controle do indicador OTD com visão por fornecedor e rota. Identifica gargalos logísticos e garante o cumprimento de prazos."
+                        data-hash="#SupplyChain #OTD #Logística #PowerBI #Operações">
+                        <img src="assets/pbi/supply-chain-otd.png" class="project-img" alt="Indicador de entregas no prazo da cadeia logística" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Supply Chain: OTD</h3>
+                            <p>Logística e pontualidade</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0" 
+                        data-title="Supply Chain: Gestão de SLA"
+                        data-img="assets/pbi/supply-chain-sla.png"
+                        data-sub="Controle de nível de serviço e conformidade de acordos operacionais"
+                        data-tags="Supply Chain, SLA, Nível de Serviço, Conformidade"
+                        data-desc="Dashboard de acompanhamento de Service Level Agreement. Monitora conformidade por contrato e fornecedor com alertas para desvios críticos."
+                        data-hash="#SLA #SupplyChain #Conformidade #PowerBI #GestãoDeServicos">
+                        <img src="assets/pbi/supply-chain-sla.png" class="project-img" alt="Gestão de SLA e conformidade de serviços" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Gestão de SLA</h3>
+                            <p>Conformidade operacional</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <!-- Seção de Curriculum Vitae -->
-            <div class="cv-section">
-                <h3>Curriculum Vitae</h3>
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <a href="cv/FabianoFonsecaResume-pt-BR.pdf" target="_blank" title="Baixar CV em Português Brasileiro">
-                            <i class="fas fa-file-pdf"></i>
-                            🇧🇷 Português
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="cv/FabianoFonsecaResume-en-US.pdf" target="_blank" title="Download CV in American English">
-                            <i class="fas fa-file-pdf"></i>
-                            🇺🇸 English
-                        </a>
-                    </li>
-                </ul>
+        <section id="artigos" class="articles">
+            <div class="container">
+                <h2 class="section-title">Artigos</h2>
+                <p class="articles-intro">Conteúdos técnicos publicados no LinkedIn sobre DataViz, modelagem analítica, engenharia e governança de dados.</p>
+
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <img src="assets/dune-chart.png" class="article-image" alt="Dune Chart: visualização com história" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Dune Chart: Visualização com História</h3>
+                            <p>Visual inspirado nos Lençóis Maranhenses para contar a performance YoY% em Power BI com mais contexto e leitura analítica.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#PowerBI</span>
+                                <span class="article-tag">#DataVisualization</span>
+                                <span class="article-tag">#DuneChart</span>
+                                <span class="article-tag">#DAX</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/dj-equalizer.png" class="article-image" alt="DJ Equalizer aplicado a DataViz" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>DJ Equalizer: Tirando um Som dos Dados</h3>
+                            <p>Metáfora de mesa de som para representar métricas de negócio com uma leitura intuitiva de realizado e variação YoY.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#DataViz</span>
+                                <span class="article-tag">#DataVisualization</span>
+                                <span class="article-tag">#DJEqualizer</span>
+                                <span class="article-tag">#PowerBI</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/ibcs-1.png" class="article-image" alt="Aplicação de IBCS em visuais nativos" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Soluções IBCS com Visuais Nativos</h3>
+                            <p>Aplicação do padrão IBCS em Power BI com medidas SVG e cálculos visuais para mais clareza e performance.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#IBCS</span>
+                                <span class="article-tag">#PowerBI</span>
+                                <span class="article-tag">#SVG</span>
+                                <span class="article-tag">#DAX</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/pyfabricops.png" class="article-image" alt="Automação de refresh com Python no Power BI" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>PyFabricOps: Automatizando Refresh no Power BI com Python</h3>
+                            <p>Automação de refresh de Dataflows e Semantic Models com OAuth, logging estruturado e rastreabilidade operacional.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#PowerBI</span>
+                                <span class="article-tag">#Python</span>
+                                <span class="article-tag">#DataEngineering</span>
+                                <span class="article-tag">#DataOps</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/forecast.png" class="article-image" alt="Estudo sobre abordagens de forecast" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Forecast: Abordagens e Limitações</h3>
+                            <p>Comparativo entre venda futura, média móvel e inteligência temporal para orientar escolhas de planejamento.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#Forecast</span>
+                                <span class="article-tag">#Planejamento</span>
+                                <span class="article-tag">#DataAnalytics</span>
+                                <span class="article-tag">#PowerBI</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/governanca.png" class="article-image" alt="Governança de dados e versionamento da verdade" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Quando a Reunião Vira Debate de Dashboard, a Governança Falhou</h3>
+                            <p>Reflexão sobre padronização de métricas, curadoria e rastreabilidade para sustentar decisões executivas.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#GovernançaDeDados</span>
+                                <span class="article-tag">#DataGovernance</span>
+                                <span class="article-tag">#BusinessIntelligence</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/parameter-field.png" class="article-image" alt="Uso avançado de parameter fields" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Parameter Fields: Múltiplas Análises</h3>
+                            <p>Uso avançado de campos de parâmetros para alternar contextos analíticos com usabilidade e comparabilidade.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#PowerBI</span>
+                                <span class="article-tag">#DataAnalytics</span>
+                                <span class="article-tag">#BusinessIntelligence</span>
+                                <span class="article-tag">#DAX</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/calendar-oracle.png" class="article-image" alt="Dim Calendar em Oracle com PL SQL" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Dim Calendar: Oracle Database</h3>
+                            <p>Tabela calendário robusta em Oracle com PL/SQL, DBMS_SCHEDULER e Jobs para manutenção contínua.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#DataWarehouse</span>
+                                <span class="article-tag">#Oracle</span>
+                                <span class="article-tag">#PLSQL</span>
+                                <span class="article-tag">#DataEngineering</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/greater-expectations.png" class="article-image" alt="Great Expectations para qualidade de dados" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>Great Expectations: Data Quality e Observabilidade Proativa</h3>
+                            <p>Implementação de validação contínua de qualidade de dados com foco em observabilidade e confiança analítica.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#DataQuality</span>
+                                <span class="article-tag">#DataObservability</span>
+                                <span class="article-tag">#GreatExpectations</span>
+                                <span class="article-tag">#Python</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="assets/dax-optimizer.png" class="article-image" alt="Otimização de modelo com DAX Optimizer" loading="lazy" decoding="async">
+                        <div class="article-content">
+                            <h3>DAX Optimizer Basic: Otimização de Performance</h3>
+                            <p>Aplicação prática das recomendações do DAX Optimizer para redução de problemas e ganho de performance.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">#DAX</span>
+                                <span class="article-tag">#PowerBI</span>
+                                <span class="article-tag">#SQLBI</span>
+                                <span class="article-tag">#Performance</span>
+                            </div>
+                            <a class="article-link" href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" rel="noopener noreferrer">Ler artigo</a>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </aside>
+        </section>
 
-        <!-- Conteúdo Principal (Portfólio de Projetos) -->
-        <main class="main-content">
-            <header class="header">
-                <h1>Portfólio de Projetos</h1>
-                <p>Projetos selecionados que demonstram a aplicação prática de Business Intelligence, DataViz e Modelagem Analítica para transformar dados em decisões estratégicas.</p>
-            </header>
-
-            <div class="portfolio-grid">
-                <!-- Projeto Dune Chart -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'dune-chart.png' na pasta do seu projeto -->
-                        <img src="assets/dune-chart.png" alt="Dune Chart">
-                    </div>
-                    <div class="project-content">
-                        <h2>Dune Chart: Visualização com História</h2>
-                        <p>Inspirado nos Lençóis Maranhenses, este gráfico transforma a linha nativa do Power BI em uma visualização rica de performance YoY%, onde a forma e a cor das "dunas" contam a história da performance mensal.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#PowerBI</span>
-                            <span class="project-tag">#DataVisualization</span>
-                            <span class="project-tag">#DuneChart</span>
-                            <span class="project-tag">#DAX</span>
-                        </div>
-                    </div>
+        <dialog id="projectModal" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+            <div class="modal-content">
+                <button class="close-modal" aria-label="Fechar modal de projeto">&times;</button>
+                <div class="modal-img-container">
+                    <img id="modalImg" src="" alt="Snapshot do Projeto">
                 </div>
-
-                <!-- Projeto DJ Equalizer -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'dj-equalizer.png' na pasta do seu projeto -->
-                        <img src="assets/dj-equalizer.png" alt="DJ Equalizer">
+                <div class="modal-info">
+                    <div class="modal-header">
+                        <h2 id="modalTitle" style="color: var(--yale-blue);"></h2>
+                        <p id="modalSub" style="color: var(--stormy-teal); font-weight: 600; margin-top: 5px;"></p>
                     </div>
-                    <div class="project-content">
-                        <h2>DJ Equalizer: Tirando um Som dos Dados</h2>
-                        <p>Uma abordagem criativa que utiliza a metáfora de uma mesa de som de DJ para representar dados de negócio. Os "volumes" são os valores realizados e o "ganho" exibe a variação YoY, criando uma conexão intuitiva e inovadora.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#DataViz</span>
-                            <span class="project-tag">#DataVisualization</span>
-                            <span class="project-tag">#DJEqualizer</span>
-                            <span class="project-tag">#PowerBI</span>
-                        </div>
-                    </div>
+                    <div id="modalTags" class="modal-tags"></div>
+                    <p id="modalDesc" style="margin-top: 20px; line-height: 1.8;"></p>
+                    <span id="modalHash" class="modal-hashtags"></span>
                 </div>
-
-                <!-- Projeto IBCS -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'ibcs-1.png' na pasta do seu projeto -->
-                        <img src="assets/ibcs-1.png" alt="Soluções IBCS">
-                    </div>
-                    <div class="project-content">
-                        <h2>Soluções IBCS com Visuais Nativos</h2>
-                        <p>Série de projetos aplicando o padrão IBCS de forma eficiente no Power BI. A solução recria tabelas, gráficos de cascata e variações com Medidas SVG e Cálculos Visuais, otimizando a clareza e a performance dos relatórios.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#IBCS</span>
-                            <span class="project-tag">#PowerBI</span>
-                            <span class="project-tag">#SVG</span>
-                            <span class="project-tag">#DAX</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto PyFabricOps -->
-                <div class="project">
-                    <div class="project-image">
-                        <img src="assets/pyfabricops.png" alt="PyFabricOps - Automação Power BI com Python">
-                    </div>
-                    <div class="project-content">
-                        <h2>PyFabricOps: Automatizando Refresh no Power BI com Python</h2>
-                        <p>Script Python desenvolvido para orquestrar o refresh de Dataflows Gen1 e Semantic Models em múltiplos workspaces do Power BI Service. Utilizando a biblioteca <strong>pyfabricops</strong>, autenticação OAuth e logging estruturado, a solução elimina dezenas de cliques manuais, reduz erros humanos e entrega rastreabilidade completa. Data Engineering também é sobre governança, observabilidade e automação.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#PowerBI</span>
-                            <span class="project-tag">#Python</span>
-                            <span class="project-tag">#DataEngineering</span>
-                            <span class="project-tag">#pyfabricops</span>
-                            <span class="project-tag">#MicrosoftFabric</span>
-                            <span class="project-tag">#DataOps</span>
-                            <span class="project-tag">#Automação</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Forecast -->
-                <div class="project">
-                    <div class="project-image">
-                        <img src="assets/forecast.png" alt="Forecast: Abordagens e Limitações">
-                    </div>
-                    <div class="project-content">
-                        <h2>Forecast: Abordagens e Limitações</h2>
-                        <p>Análise comparativa das três principais abordagens de forecast utilizadas no mercado: venda futura, média móvel e inteligência temporal (ano anterior + growth). O estudo detalha os pontos fortes e fracos de cada método, concluindo que não existe um "melhor forecast", mas sim o mais adequado ao contexto e à decisão a ser tomada.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#Forecast</span>
-                            <span class="project-tag">#Planejamento</span>
-                            <span class="project-tag">#DataAnalytics</span>
-                            <span class="project-tag">#PowerBI</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Governança de Dados -->
-                <div class="project">
-                    <div class="project-image">
-                        <img src="assets/governanca.png" alt="Governança de Dados">
-                    </div>
-                    <div class="project-content">
-                        <h2>Quando a Reunião Vira Debate de Dashboard, a Governança Falhou</h2>
-                        <p>Se as reuniões de diretoria se tornam disputas sobre qual dashboard está correto, o problema não é o dashboard — é a falta de governança de dados. Este post aborda como garantir uma única versão da verdade: métricas padronizadas seguindo regras de mercado, curadoria pela controladoria e rastreabilidade na ingestão e transformação dos dados. O papel do analista vai muito além de "fazer gráfico".</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#GovernançaDeDados</span>
-                            <span class="project-tag">#DataGovernance</span>
-                            <span class="project-tag">#Dados</span>
-                            <span class="project-tag">#BusinessIntelligence</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Parameter Field (Adicionado ) -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
-                        <img src="assets/parameter-field.png" alt="Parameter Fields Avançado">
-                    </div>
-                    <div class="project-content">
-                        <h2>Parameter Fields: Múltiplas Análises</h2>
-                        <p>Solução avançada que usa Campos de Parâmetros para permitir que o usuário alterne entre diferentes contextos de análise com um único clique, melhorando a usabilidade e garantindo a clareza da comparação de métricas.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#PowerBI</span>
-                            <span class="project-tag">#DataAnalytics</span>
-                            <span class="project-tag">#BusinessIntelligence</span>
-                            <span class="project-tag">#DAX</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Calendar Oracle -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
-                        <img src="assets/calendar-oracle.png" alt="Oracle Calendar">
-                    </div>
-                    <div class="project-content">
-                        <h2>Dim Calendar: Oracle Database</h2>
-                        <p>Uma tabela calendário no Oracle utilizando PL/SQL, DBMS_SCHEDULER e Jobs para manter a sua dimensão sempre robusta e atualizada na camada de banco de dados.</p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#DataWarehouse</span>
-                            <span class="project-tag">#Oracle</span>
-                            <span class="project-tag">#PLSQL</span>
-                            <span class="project-tag">#DataEngineering</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Greater Expectations -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
-                        <img src="assets/greater-expectations.png" alt="Greater Expectations">
-                    </div>
-                    <div class="project-content">
-                        <h2>Great Expectations: Data Quality e Observabilidade Proativa</h2>
-                        <p>Este projeto apresenta a implementação do Great Expectations (GE), um framework essencial para a qualidade e observabilidade de dados. O GE permite a definição e o monitoramento de expectativas de dados, atuando como um checkpoint proativo para detectar anomalias, inconsistências e violações de regras de negócio na fonte. A aplicação deste conceito, mesmo em bancos transacionais, garante que apenas dados íntegros avancem pela arquitetura analítica (Bronze → Silver → Gold), transformando a validação em uma estratégia contínua de confiança e maturidade de dados. </p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#DataDriven</span>
-                            <span class="project-tag">#DataQuality</span>
-                            <span class="project-tag">#DataObservability</span>
-                            <span class="project-tag">#GreatExpectations</span>
-                            <span class="project-tag">#Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Dax Optimizer Basic -->
-                <div class="project">
-                    <div class="project-image">
-                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
-                        <img src="assets/dax-optimizer.png" alt="Dax Optimizer Basic">
-                    </div>
-                    <div class="project-content">
-                        <h2>DAX Optimizer Basic: Otimização de Performance</h2>
-                        <p>Aplicação das recomendações do DAX Optimizer Basic para analisar e otimizar um modelo semântico real no Power BI. A implementação resultou em uma redução de mais de 60% nos problemas identificados e uma melhoria superior a 70% no desempenho da CPU, comprovando a eficácia da ferramenta para garantir a performance e eficiência em relatórios complexos. </p>
-                        <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">Ver Detalhes</a>
-                        <div class="project-tags">
-                            <span class="project-tag">#DAX</span>
-                            <span class="project-tag">#PowerBI</span>
-                            <span class="project-tag">#SQLBI</span>
-                            <span class="project-tag">#Performance</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </main>
-    </div>
+        </dialog>
 
+        <section id="contato" class="container contact">
+            <h2 class="section-title" style="margin: 0 auto 50px; display: table;">Vamos Conversar?</h2>
+            <p>Transforme seus dados em vantagem competitiva hoje mesmo.</p>
+            
+            <div class="contact-buttons">
+                <a href="https://wa.me/5598992023224" class="contact-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24"><path d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.988 0 1.758.459 3.41 1.259 4.847l-1.337 4.888 5.01-1.314c1.4.764 2.992 1.2 4.673 1.2 5.507 0 9.987-4.479 9.987-9.988 0-5.508-4.479-9.988-9.987-9.988zm4.904 14.123c-.212.592-1.22 1.156-1.682 1.23-.461.074-.902.138-2.825-.624-2.458-.975-4.043-3.474-4.166-3.637-.123-.163-.999-1.328-.999-2.535 0-1.206.635-1.8 1.031-2.214.396-.414.864-.517 1.15-.517.286 0 .572.002.821.014.264.012.613-.099.959.739.356.864.841 2.227.914 2.375.074.148.123.321.025.518-.099.197-.148.321-.296.494-.148.173-.313.387-.447.518-.163.163-.334.341-.143.667.191.326.849 1.399 1.82 2.266 1.252 1.121 2.312 1.47 2.64 1.634.328.163.518.138.712-.086.195-.224.842-.98.1.066-1.353-.223-.556-.47-.111-.741.444-.271.74-.543 1.036-.296.296.247.444.518.346.714z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/fsanfo" class="contact-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:fsanfo@gmail.com" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l12-9.725v15.438h-24v-15.438l12 9.725z"/></svg>
+                    E-mail
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Fabiano Fonseca</strong></p>
+            <p>Transformando Dados em Decisões Estratégicas</p>
+            <div class="footer-line">
+                <p>&copy; 2026 - Fabiano Fonseca. Feito com foco em Performance e Design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('projectModal');
+        const closeModal = document.querySelector('.close-modal');
+        const cards = document.querySelectorAll('.project-card');
+        const modalImgContainer = document.querySelector('.modal-img-container');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSub = document.getElementById('modalSub');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalHash = document.getElementById('modalHash');
+        const modalTags = document.getElementById('modalTags');
+        let lastFocusedCard = null;
+
+        const updateModalLogoMaskPosition = () => {
+            if (!modalImgContainer || !modalImg.naturalWidth || !modalImg.naturalHeight) {
+                return;
+            }
+
+            const boxWidth = modalImg.clientWidth;
+            const boxHeight = modalImg.clientHeight;
+            if (!boxWidth || !boxHeight) {
+                return;
+            }
+
+            const scale = Math.min(boxWidth / modalImg.naturalWidth, boxHeight / modalImg.naturalHeight);
+            const renderedWidth = modalImg.naturalWidth * scale;
+            const renderedHeight = modalImg.naturalHeight * scale;
+            const offsetX = (boxWidth - renderedWidth) / 2;
+            const offsetY = (boxHeight - renderedHeight) / 2;
+
+            const maskLeft = Math.max(offsetX + 10, 8);
+            const maskTop = Math.max(offsetY + 8, 8);
+            const maskWidth = Math.min(Math.max(renderedWidth * 0.23, 80), 160);
+            const maskHeight = Math.min(Math.max(renderedHeight * 0.11, 28), 54);
+
+            modalImgContainer.style.setProperty('--logo-mask-left', `${maskLeft}px`);
+            modalImgContainer.style.setProperty('--logo-mask-top', `${maskTop}px`);
+            modalImgContainer.style.setProperty('--logo-mask-width', `${maskWidth}px`);
+            modalImgContainer.style.setProperty('--logo-mask-height', `${maskHeight}px`);
+        };
+
+        const lockBodyScroll = () => {
+            const scrollbarCompensation = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.setProperty('--scrollbar-compensation', `${Math.max(scrollbarCompensation, 0)}px`);
+            document.body.classList.add('modal-open');
+        };
+
+        const unlockBodyScroll = () => {
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('--scrollbar-compensation');
+        };
+
+        const openModalFromCard = (card) => {
+            const data = card.dataset;
+            const tags = data.tags ? data.tags.split(',') : [];
+
+            modalImg.src = data.img || '';
+            modalImg.onload = updateModalLogoMaskPosition;
+            modalTitle.innerText = data.title || '';
+            modalSub.innerText = data.sub || '';
+            modalDesc.innerText = data.desc || '';
+            modalHash.innerText = data.hash || '';
+
+            modalTags.innerHTML = '';
+            tags.forEach((tag) => {
+                const cleanTag = tag.trim();
+                if (!cleanTag) {
+                    return;
+                }
+
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.innerText = cleanTag;
+                modalTags.appendChild(span);
+            });
+
+            lastFocusedCard = card;
+            modal.showModal();
+            lockBodyScroll();
+            requestAnimationFrame(updateModalLogoMaskPosition);
+            closeModal.focus();
+        };
+
+        cards.forEach((card) => {
+            card.addEventListener('click', () => {
+                openModalFromCard(card);
+            });
+
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openModalFromCard(card);
+                }
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        });
+
+        modal.addEventListener('close', () => {
+            unlockBodyScroll();
+            if (lastFocusedCard) {
+                lastFocusedCard.focus();
+            }
+        });
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.open) {
+                modal.close();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (modal.open) {
+                updateModalLogoMaskPosition();
+            }
+        });
+    </script>
 </body>
-
 </html>

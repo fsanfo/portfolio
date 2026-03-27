@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Projetos | Fabiano Fonseca</title>
+    <!-- Incluindo Font Awesome para ícones de contato -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos baseados na paleta e layout do seu CV */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap' );
+
+        :root {
+            --bg-dark: #0a2d4a; /* Cor de fundo principal */
+            --primary-blue: #33a1fd; /* Cor de destaque principal */
+            --text-light: #ffffff;
+            --text-muted: #c5c5c5;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-bg-hover: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 40px 20px;
+        }
+        
+        /* Novo Container para layout de duas colunas (sidebar + conteúdo) */
+        .page-container {
+            max-width: 1200px; /* Aumentando a largura máxima para acomodar a sidebar */
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr; /* Padrão mobile: uma coluna */
+            gap: 40px;
+        }
+        
+        /* Estilos da Sidebar (Informações Pessoais e Contato) */
+        .sidebar {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            height: fit-content;
+        }
+
+        .personal-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-blue);
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(51, 161, 253, 0.5); /* Sombra suave de destaque */
+        }
+
+        .personal-info h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .personal-info p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Estilos da Seção de Contato */
+        .contact-info {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+        }
+
+        .contact-item a {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-blue);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        /* Estilos da Seção de Curriculum Vitae */
+        .cv-section {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cv-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        /* Estilos do Conteúdo Principal (Projetos) */
+        .main-content {
+            padding-top: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+        .project {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .project:hover {
+            background-color: var(--card-bg-hover);
+            transform: translateY(-5px); /* Efeito de elevação sutil */
+        }
+        .project-image {
+            text-align: center;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+        .project-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 2px solid var(--primary-blue);
+            transition: transform 0.4s ease;
+        }
+        .project:hover .project-image img {
+            transform: scale(1.05); /* Zoom na imagem ao passar o mouse */
+        }
+
+        .project-content h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 0 0 10px 0;
+        }
+        .project-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin: 0;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            background-color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-link:hover {
+            background-color: #1e88e5;
+            box-shadow: 0 4px 10px rgba(51, 161, 253, 0.4);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .project-tag {
+            font-size: 0.78rem;
+            color: var(--primary-blue);
+            background-color: rgba(51, 161, 253, 0.1);
+            border: 1px solid rgba(51, 161, 253, 0.3);
+            border-radius: 20px;
+            padding: 3px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background-color: rgba(51, 161, 253, 0.25);
+            color: #fff;
+        }
+
+        /* CENTRALIZAÇÃO DO CONTATO PARA TELAS PEQUENAS (Mobile) */
+        @media (max-width: 767px) {
+            .contact-list {
+                /* Centraliza a lista inteira */
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+            }
+            .contact-item a {
+                /* Centraliza o conteúdo (ícone + texto) dentro de cada item */
+                justify-content: center;
+            }
+            /* Garante que os títulos de seção também estejam centralizados */
+            .sidebar h3 {
+                text-align: center;
+            }
+        }
+
+        /* Layout para telas intermediárias */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .project {
+                flex-direction: row;
+                align-items: center;
+            }
+            .project:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .project-image {
+                flex: 0 0 40%;
+            }
+            .project-content {
+                flex: 1;
+            }
+        }
+        
+        /* Layout para telas maiores: Sidebar e Conteúdo Principal em duas colunas */
+        @media (min-width: 1024px) {
+            .page-container {
+                grid-template-columns: 300px 1fr; /* Sidebar de 300px e Conteúdo Principal */
+            }
+            .main-content {
+                padding-top: 0;
+            }
+            
+            /* Ajuste do layout dos projetos para melhor visualização na coluna principal */
+            .project {
+                flex-direction: row;
+                align-items: center;
+            }
+            .project:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .project-image {
+                flex: 0 0 40%;
+            }
+            .project-content {
+                flex: 1;
+            }
+            
+            /* Restaura o alinhamento esquerdo do contato na sidebar (para desktop) */
+            .contact-list {
+                align-items: flex-start; 
+            }
+            .contact-item a {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <!-- Sidebar (Dados Pessoais e Contato) -->
+        <aside class="sidebar">
+            <div class="personal-info">
+                <!-- Avatar Adicionado -->
+                <img src="assets/avatar-linkedin-2.png" alt="Avatar de Fabiano Fonseca" class="avatar">
+                
+                <!-- Dados Pessoais de Identificação -->
+                <h2>Fabiano Fonseca</h2>
+                <p>Especialista em Business Intelligence e DataViz.</p>
+                <p>Transformando dados complexos em histórias visuais acionáveis.</p>
+            </div>
+
+            <!-- Seção de Contato -->
+            <div class="contact-info">
+                <h3>Entre em Contato</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <a href="mailto:fsanfo@gmail.com" title="Enviar Email">
+                            <i class="fas fa-envelope"></i>
+                            fsanfo@gmail.com
+                        </a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://wa.me/5598992023224" target="_blank" title="Enviar WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                            +55 98 9 9202-3224
+                        </a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://www.linkedin.com/in/fsanfo" target="_blank" title="Ver LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                            /in/fsanfo
+                        </a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://www.instagram.com/ofabianofonseca" target="_blank" title="Ver Instagram">
+                            <i class="fab fa-instagram"></i>
+                            @ofabianofonseca
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Seção de Curriculum Vitae -->
+            <div class="cv-section">
+                <h3>Curriculum Vitae</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <a href="cv/FabianoFonsecaResume-pt-BR.pdf" target="_blank" title="Baixar CV em Português Brasileiro">
+                            <i class="fas fa-file-pdf"></i>
+                            🇧🇷 Português
+                        </a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="cv/FabianoFonsecaResume-en-US.pdf" target="_blank" title="Download CV in American English">
+                            <i class="fas fa-file-pdf"></i>
+                            🇺🇸 English
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal (Portfólio de Projetos) -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Portfólio de Projetos</h1>
+                <p>Projetos selecionados que demonstram a aplicação prática de Business Intelligence, DataViz e Modelagem Analítica para transformar dados em decisões estratégicas.</p>
+            </header>
+
+            <div class="portfolio-grid">
+                <!-- Projeto Dune Chart -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'dune-chart.png' na pasta do seu projeto -->
+                        <img src="assets/dune-chart.png" alt="Dune Chart">
+                    </div>
+                    <div class="project-content">
+                        <h2>Dune Chart: Visualização com História</h2>
+                        <p>Inspirado nos Lençóis Maranhenses, este gráfico transforma a linha nativa do Power BI em uma visualização rica de performance YoY%, onde a forma e a cor das "dunas" contam a história da performance mensal.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#DataVisualization</span>
+                            <span class="project-tag">#DuneChart</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto DJ Equalizer -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'dj-equalizer.png' na pasta do seu projeto -->
+                        <img src="assets/dj-equalizer.png" alt="DJ Equalizer">
+                    </div>
+                    <div class="project-content">
+                        <h2>DJ Equalizer: Tirando um Som dos Dados</h2>
+                        <p>Uma abordagem criativa que utiliza a metáfora de uma mesa de som de DJ para representar dados de negócio. Os "volumes" são os valores realizados e o "ganho" exibe a variação YoY, criando uma conexão intuitiva e inovadora.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataViz</span>
+                            <span class="project-tag">#DataVisualization</span>
+                            <span class="project-tag">#DJEqualizer</span>
+                            <span class="project-tag">#PowerBI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto IBCS -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'ibcs-1.png' na pasta do seu projeto -->
+                        <img src="assets/ibcs-1.png" alt="Soluções IBCS">
+                    </div>
+                    <div class="project-content">
+                        <h2>Soluções IBCS com Visuais Nativos</h2>
+                        <p>Série de projetos aplicando o padrão IBCS de forma eficiente no Power BI. A solução recria tabelas, gráficos de cascata e variações com Medidas SVG e Cálculos Visuais, otimizando a clareza e a performance dos relatórios.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#IBCS</span>
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#SVG</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto PyFabricOps -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/pyfabricops.png" alt="PyFabricOps - Automação Power BI com Python">
+                    </div>
+                    <div class="project-content">
+                        <h2>PyFabricOps: Automatizando Refresh no Power BI com Python</h2>
+                        <p>Script Python desenvolvido para orquestrar o refresh de Dataflows Gen1 e Semantic Models em múltiplos workspaces do Power BI Service. Utilizando a biblioteca <strong>pyfabricops</strong>, autenticação OAuth e logging estruturado, a solução elimina dezenas de cliques manuais, reduz erros humanos e entrega rastreabilidade completa. Data Engineering também é sobre governança, observabilidade e automação.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#Python</span>
+                            <span class="project-tag">#DataEngineering</span>
+                            <span class="project-tag">#pyfabricops</span>
+                            <span class="project-tag">#MicrosoftFabric</span>
+                            <span class="project-tag">#DataOps</span>
+                            <span class="project-tag">#Automação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Forecast -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/forecast.png" alt="Forecast: Abordagens e Limitações">
+                    </div>
+                    <div class="project-content">
+                        <h2>Forecast: Abordagens e Limitações</h2>
+                        <p>Análise comparativa das três principais abordagens de forecast utilizadas no mercado: venda futura, média móvel e inteligência temporal (ano anterior + growth). O estudo detalha os pontos fortes e fracos de cada método, concluindo que não existe um "melhor forecast", mas sim o mais adequado ao contexto e à decisão a ser tomada.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#Forecast</span>
+                            <span class="project-tag">#Planejamento</span>
+                            <span class="project-tag">#DataAnalytics</span>
+                            <span class="project-tag">#PowerBI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Governança de Dados -->
+                <div class="project">
+                    <div class="project-image">
+                        <img src="assets/governanca.png" alt="Governança de Dados">
+                    </div>
+                    <div class="project-content">
+                        <h2>Quando a Reunião Vira Debate de Dashboard, a Governança Falhou</h2>
+                        <p>Se as reuniões de diretoria se tornam disputas sobre qual dashboard está correto, o problema não é o dashboard — é a falta de governança de dados. Este post aborda como garantir uma única versão da verdade: métricas padronizadas seguindo regras de mercado, curadoria pela controladoria e rastreabilidade na ingestão e transformação dos dados. O papel do analista vai muito além de "fazer gráfico".</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#GovernançaDeDados</span>
+                            <span class="project-tag">#DataGovernance</span>
+                            <span class="project-tag">#Dados</span>
+                            <span class="project-tag">#BusinessIntelligence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Parameter Field (Adicionado ) -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/parameter-field.png" alt="Parameter Fields Avançado">
+                    </div>
+                    <div class="project-content">
+                        <h2>Parameter Fields: Múltiplas Análises</h2>
+                        <p>Solução avançada que usa Campos de Parâmetros para permitir que o usuário alterne entre diferentes contextos de análise com um único clique, melhorando a usabilidade e garantindo a clareza da comparação de métricas.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#DataAnalytics</span>
+                            <span class="project-tag">#BusinessIntelligence</span>
+                            <span class="project-tag">#DAX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Calendar Oracle -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/calendar-oracle.png" alt="Oracle Calendar">
+                    </div>
+                    <div class="project-content">
+                        <h2>Dim Calendar: Oracle Database</h2>
+                        <p>Uma tabela calendário no Oracle utilizando PL/SQL, DBMS_SCHEDULER e Jobs para manter a sua dimensão sempre robusta e atualizada na camada de banco de dados.</p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataWarehouse</span>
+                            <span class="project-tag">#Oracle</span>
+                            <span class="project-tag">#PLSQL</span>
+                            <span class="project-tag">#DataEngineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Greater Expectations -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/greater-expectations.png" alt="Greater Expectations">
+                    </div>
+                    <div class="project-content">
+                        <h2>Great Expectations: Data Quality e Observabilidade Proativa</h2>
+                        <p>Este projeto apresenta a implementação do Great Expectations (GE), um framework essencial para a qualidade e observabilidade de dados. O GE permite a definição e o monitoramento de expectativas de dados, atuando como um checkpoint proativo para detectar anomalias, inconsistências e violações de regras de negócio na fonte. A aplicação deste conceito, mesmo em bancos transacionais, garante que apenas dados íntegros avancem pela arquitetura analítica (Bronze → Silver → Gold), transformando a validação em uma estratégia contínua de confiança e maturidade de dados. </p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DataDriven</span>
+                            <span class="project-tag">#DataQuality</span>
+                            <span class="project-tag">#DataObservability</span>
+                            <span class="project-tag">#GreatExpectations</span>
+                            <span class="project-tag">#Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Dax Optimizer Basic -->
+                <div class="project">
+                    <div class="project-image">
+                        <!-- Lembre-se de manter o arquivo 'parameter-field.png' na pasta do seu projeto -->
+                        <img src="assets/dax-optimizer.png" alt="Dax Optimizer Basic">
+                    </div>
+                    <div class="project-content">
+                        <h2>DAX Optimizer Basic: Otimização de Performance</h2>
+                        <p>Aplicação das recomendações do DAX Optimizer Basic para analisar e otimizar um modelo semântico real no Power BI. A implementação resultou em uma redução de mais de 60% nos problemas identificados e uma melhoria superior a 70% no desempenho da CPU, comprovando a eficácia da ferramenta para garantir a performance e eficiência em relatórios complexos. </p>
+                        <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">Ver Detalhes</a>
+                        <div class="project-tags">
+                            <span class="project-tag">#DAX</span>
+                            <span class="project-tag">#PowerBI</span>
+                            <span class="project-tag">#SQLBI</span>
+                            <span class="project-tag">#Performance</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
