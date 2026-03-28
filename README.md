@@ -1,109 +1,87 @@
-# 📊 Portfólio de Projetos — Fabiano Fonseca
+# Portfólio de BI — Fabiano Fonseca
 
-Portfólio pessoal desenvolvido em HTML/CSS puro, apresentando projetos práticos nas áreas de **Business Intelligence**, **Data Visualization**, **Engenharia de Dados** e **Governança de Dados**.
+Portfólio pessoal em HTML, CSS e JavaScript com foco em Business Intelligence, Data Visualization, Engenharia de Dados e Governança de Dados.
 
-🔗 **Acesse:** [fsanfo.github.io/portfolio](https://fsanfo.github.io/portfolio)
+Site publicado em:
+[fsanfo.github.io/portfolio](https://fsanfo.github.io/portfolio)
 
----
+## Sobre
 
-## 🧑‍💻 Sobre o Projeto
+O projeto reúne:
+- projetos reais de BI com foco em contexto executivo e profundidade técnica
+- artigos técnicos publicados no LinkedIn
+- currículo em português e inglês
+- canais diretos de contato
 
-Este portfólio foi criado com o objetivo de centralizar e apresentar de forma clara e visual os principais projetos e conteúdos publicados no LinkedIn. O layout é responsivo, com suporte a mobile, tablet e desktop, e utiliza uma paleta de cores escura com destaque em azul.
+A versão atual do site adota uma interface premium com navegação reativa, hero imersivo, animações com GSAP, cards de projetos com modal detalhada e layout responsivo.
 
----
+## Estrutura
 
-## 🗂️ Estrutura do Projeto
-
-```
+```text
 portfolio/
-├── index.html          # Página principal do portfólio
-├── assets/             # Imagens dos projetos e avatar
-│   ├── avatar-anime-3.png
-│   ├── dune-chart.png
-│   ├── dj-equalizer.png
-│   ├── ibcs-1.png
-│   ├── ibcs-2.png
-│   ├── ibcs-3.png
-│   ├── kpi-card.png
-│   ├── parameter-field.png
-│   ├── forecast.png
-│   ├── governanca.png
-│   ├── pyfabricops.png
-│   └── ...
-├── cv/                 # Currículos em PDF
-│   ├── FabianoFonsecaResume-pt-BR.pdf   # CV em Português Brasileiro
-│   └── FabianoFonsecaResume-en-US.pdf   # CV em Inglês Americano
-└── README.md
+├── index.html
+├── index.html.bak
+├── portfolio_cv.html
+├── README.md
+├── assets/
+│   ├── css/
+│   └── pbi/
+├── cv/
+├── prompts/
+└── templates/
 ```
 
----
+## Destaques da Interface
 
-## 📁 Projetos em Destaque
+- Hero premium com tipografia expressiva e animações de entrada
+- Navegação fixa com comportamento dinâmico no scroll
+- Tooltip textual contextual no menu
+- Seção de projetos com cards em blur e modal com detalhes completos
+- Seção de artigos com curadoria visual e links externos
+- Smooth scroll e animações progressivas respeitando `prefers-reduced-motion`
 
-| Projeto | Tema | Tecnologias |
-|---|---|---|
-| **Dune Chart** | Data Visualization | Power BI, DAX |
-| **DJ Equalizer** | Data Visualization | Power BI, DAX |
-| **Soluções IBCS** | DataViz / Padrão IBCS | Power BI, SVG, DAX |
-| **PyFabricOps** | Engenharia de Dados | Python, Power BI API, OAuth |
-| **Forecast** | Planejamento / Analítica | Power BI, DAX |
-| **Governança de Dados** | Data Governance | Conceitual / BI |
-| **Parameter Fields** | Power BI Avançado | Power BI, DAX |
+## Projetos Apresentados
 
----
+O portfólio destaca entregas em áreas como:
+- dashboard executivo
+- indicadores comerciais
+- controladoria e EBITDA
+- segmentação RFM
+- metas e vendas de e-commerce
+- supply chain com OTD e SLA
 
-## 🛠️ Tecnologias Utilizadas
+## Stack
 
-- **HTML5** — estrutura semântica
-- **CSS3** — layout responsivo com CSS Grid e Flexbox, variáveis CSS, media queries
-- **Font Awesome** — ícones de contato
-- **Google Fonts** — tipografia (Lato)
+- HTML5
+- CSS3
+- JavaScript vanilla
+- GSAP
+- ScrollTrigger
+- Lenis
+- SplitType
+- Google Fonts
 
----
+## Execução Local
 
-## 📱 Responsividade
-
-O layout se adapta a três breakpoints:
-
-- **Mobile** (< 768px): coluna única, contato centralizado
-- **Tablet** (768px – 1023px): layout de duas colunas por projeto (imagem + texto)
-- **Desktop** (≥ 1024px): sidebar fixa de 300px + coluna principal de projetos
-
----
-
-## 🚀 Como Executar Localmente
-
-Por ser um projeto estático, basta abrir o arquivo `index.html` diretamente no navegador:
+Como o projeto é estático, basta abrir o arquivo principal no navegador:
 
 ```bash
-# Via terminal
 start index.html
-
-# Ou com extensão Live Server no VS Code
 ```
 
----
+Se preferir, use uma extensão como Live Server no VS Code.
 
-## 📄 Curriculum Vitae
+## Currículos
 
-O portfólio disponibiliza o CV para download diretamente na sidebar, nos dois idiomas:
+- Português: `cv/FabianoFonsecaResume-pt-BR.pdf`
+- Inglês: `cv/FabianoFonsecaResume-en-US.pdf`
 
-| Idioma | Arquivo |
-|---|---|
-| 🇧🇷 Português | `cv/FabianoFonsecaResume-pt-BR.pdf` |
-| 🇺🇸 English | `cv/FabianoFonsecaResume-en-US.pdf` |
+## Contato
 
----
+- Email: [fsanfo@gmail.com](mailto:fsanfo@gmail.com)
+- LinkedIn: [linkedin.com/in/fsanfo](https://www.linkedin.com/in/fsanfo)
+- WhatsApp: [+55 98 9 9202-3224](https://wa.me/5598992023224)
 
-## 📬 Contato
+## Observação
 
-| Canal | Link |
-|---|---|
-| ✉️ Email | [fsanfo@gmail.com](mailto:fsanfo@gmail.com) |
-| 💼 LinkedIn | [linkedin.com/in/fsanfo](https://www.linkedin.com/in/fsanfo) |
-| 📸 Instagram | [@ofabianofonseca](https://www.instagram.com/ofabianofonseca) |
-| 📱 WhatsApp | [+55 98 9 9202-3224](https://wa.me/5598992023224) |
-
----
-
-> *"Transformando dados complexos em histórias visuais acionáveis."*
+`index.html` é a versão principal em produção. O arquivo experimental `index-b.html` foi removido após a migração definitiva do layout premium.
