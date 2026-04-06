@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta de Apresentação - Fabiano Fonseca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f2ee;
+      --ink: #1b1a18;
+      --muted: #5f5951;
+      --line: #c5beb3;
+      --accent: #8f5f27;
+      --card: rgba(255, 255, 255, 0.7);
+      --paper-shadow: 0 22px 60px rgba(32, 22, 9, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(120% 120% at 10% 10%, #ffffff 0%, rgba(255, 255, 255, 0) 56%),
+        radial-gradient(130% 130% at 90% 0%, #efe6d8 0%, rgba(239, 230, 216, 0) 50%),
+        linear-gradient(145deg, #f3f0ea 0%, #e8e2d8 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: radial-gradient(#000 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+      mix-blend-mode: multiply;
+      z-index: 0;
+    }
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      background: #191611;
+      color: #f2eee8;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform-origin: top center;
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 700ms ease;
+      will-change: transform, opacity;
+    }
+
+    .preloader--hidden {
+      opacity: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .canvas {
+      position: relative;
+      z-index: 1;
+      width: min(920px, calc(100% - 2rem));
+      margin: clamp(1rem, 3vw, 2.5rem) auto;
+      padding: clamp(0.6rem, 2vw, 1.2rem);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.16));
+      backdrop-filter: blur(8px);
+    }
+
+    .page {
+      width: 210mm;
+      max-width: 100%;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 18mm 18mm 16mm;
+      background: #fff;
+      border: 1px solid #d8d1c5;
+      border-radius: 14px;
+      box-shadow: var(--paper-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0) 30%, rgba(246, 236, 221, 0.26) 100%);
+    }
+
+    .doc-header {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      margin: 0 0 10mm;
+      padding: 0 0 7mm;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(6px);
+      transition: transform 300ms ease, opacity 300ms ease;
+    }
+
+    .doc-header.is-hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.4rem 0 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.03;
+      font-size: clamp(2rem, 5.4vw, 3.45rem);
+      max-width: 16ch;
+      text-wrap: balance;
+    }
+
+    .subtitle {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+      margin-bottom: 10mm;
+      padding: 5mm;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      break-inside: avoid;
+      page-break-inside: avoid;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+      line-height: 1.15;
+      font-family: "Fraunces", Georgia, serif;
+      text-wrap: pretty;
+    }
+
+    .hero ul {
+      margin: 0;
+      padding-left: 1rem;
+      align-self: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .recipient {
+      font-size: 0.95rem;
+      color: #2f2b25;
+      margin-bottom: 7mm;
+      border-left: 3px solid var(--accent);
+      padding: 0.3rem 0 0.3rem 0.75rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter {
+      position: relative;
+      z-index: 2;
+      font-size: 1.03rem;
+      line-height: 1.72;
+      color: #29261f;
+      text-wrap: pretty;
+    }
+
+    .letter p {
+      margin: 0 0 1rem;
+    }
+
+    .letter strong {
+      font-weight: 800;
+    }
+
+    .skills {
+      margin: 0.9rem 0 1rem;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(245, 241, 234, 0.78);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .skills h3 {
+      margin: 0 0 0.55rem;
+      font-size: 0.94rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .skills ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .skills li {
+      margin: 0 0 0.45rem;
+    }
+
+    .signature {
+      margin-top: 1.4rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .signature p {
+      margin: 0.2rem 0;
+    }
+
+    .contact {
+      margin-top: 0.9rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 0.2rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration-color: rgba(143, 95, 39, 0.42);
+    }
+
+    .fade,
+    .rise {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .is-ready .fade,
+    .is-ready .rise {
+      opacity: 1;
+      transform: none;
+      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 600ms ease;
+    }
+
+    .is-ready .fade:nth-of-type(1) { transition-delay: 80ms; }
+    .is-ready .fade:nth-of-type(2) { transition-delay: 160ms; }
+    .is-ready .fade:nth-of-type(3) { transition-delay: 240ms; }
+    .is-ready .fade:nth-of-type(4) { transition-delay: 320ms; }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(105%);
+      will-change: transform, opacity;
+    }
+
+    .is-ready .word {
+      opacity: 1;
+      transform: none;
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 520ms ease;
+    }
+
+    @media (max-width: 860px) {
+      .canvas {
+        width: min(100%, calc(100% - 0.8rem));
+        margin: 0.4rem auto;
+        border-radius: 14px;
+        padding: 0.55rem;
+      }
+
+      .page {
+        min-height: auto;
+        border-radius: 10px;
+        padding: 14mm 11mm;
+      }
+
+      .doc-header {
+        margin: 0 0 8mm;
+        padding: 0 0 6mm;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .preloader {
+        display: none;
+      }
+
+      .fade,
+      .rise,
+      .word {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff !important;
+      }
+
+      body::before,
+      .preloader,
+      .canvas::before {
+        display: none !important;
+      }
+
+      .canvas {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: #fff;
+        backdrop-filter: none;
+      }
+
+      .page {
+        width: auto;
+        max-width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .page::after {
+        display: none;
+      }
+
+      .doc-header {
+        position: static;
+        margin: 0 0 7mm;
+        padding: 0 0 5mm;
+        border-bottom: 1px solid #bfb7a9;
+        backdrop-filter: none;
+        background: transparent;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+
+      .hero,
+      .skills,
+      .recipient,
+      .signature {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .fade,
+      .rise,
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    Preparando carta
+  </div>
+
+  <main class="canvas" id="documentRoot">
+    <article class="page" aria-label="Carta de apresentação">
+      <header class="doc-header" id="smartHeader">
+        <p class="eyebrow">Carta de Apresentação</p>
+        <h1 id="headline">Fabiano Fonseca para [Nome da Vaga]</h1>
+        <p class="subtitle">Tecnologia, estratégia e crescimento orientado por dados.</p>
+      </header>
+
+      <section class="hero rise" aria-label="Resumo executivo">
+        <h2>
+          Mais de 15 anos conectando BI, ERP e estratégia para acelerar decisão executiva.
+        </h2>
+        <ul>
+          <li>Estruturação de área de BI do zero.</li>
+          <li>Mais de 60 dashboards estratégicos entregues.</li>
+          <li>Redução de 60% no tempo de geração de relatórios.</li>
+          <li>Otimização de performance DAX em até 70%.</li>
+        </ul>
+      </section>
+
+      <section class="recipient rise" aria-label="Destinatário">
+        Aos cuidados do Responsável pela Seleção / Gestor de Contratação<br />
+        <strong>[Nome da Empresa]</strong>
+      </section>
+
+      <section class="letter" aria-label="Conteúdo da carta">
+        <p class="fade"><strong>Prezado(a) Responsável,</strong></p>
+
+        <p class="fade">
+          Com mais de 15 anos de experiência na intersecção entre tecnologia e estratégia de negócios,
+          acompanho com entusiasmo a trajetória da <strong>[Nome da Empresa]</strong> e submeto minha
+          candidatura para a posição de <strong>[Nome da Vaga]</strong>. Minha carreira é pautada pela
+          transformação de dados brutos em motores de crescimento, uma expertise que consolidei
+          liderando departamentos de BI e modernizando ecossistemas de ERP.
+        </p>
+
+        <p class="fade">
+          Em minha trajetória recente como Gerente de Business Intelligence, fui responsável por
+          estruturar a área do zero, entregando mais de 60 dashboards estratégicos que reduziram o
+          tempo de geração de relatórios em 60%. Minha abordagem combina rigor técnico, como a
+          otimização de performance DAX em 70% e a implementação de governança de dados, com uma
+          visão executiva clara, utilizando padrões <strong>IBCS</strong> para garantir que a
+          comunicação com o C-Level seja direta e eficiente.
+        </p>
+
+        <section class="skills fade" aria-label="Especialidades">
+          <h3>Especialidades técnicas</h3>
+          <ul>
+            <li><strong>Ecossistema Microsoft:</strong> expert em Power BI e Microsoft Fabric.</li>
+            <li>
+              <strong>Dados e Performance:</strong> domínio avançado de SQL (PL/SQL, T-SQL) e
+              otimização em ambientes Oracle e SQL Server.
+            </li>
+            <li>
+              <strong>Inovação Visual:</strong> desenvolvimento de visuais customizados via SVG,
+              como os projetos Dune Chart e DJ Equalizer Chart.
+            </li>
+          </ul>
+        </section>
+
+        <p class="fade">
+          Minha formação inclui MBAs em <strong>Business Intelligence</strong> (IPOG) e
+          <strong>Finanças e Auditoria</strong> (FGV), o que me permite transitar com facilidade
+          entre as necessidades técnicas da TI e as métricas de ROI exigidas pelo negócio.
+          Atualmente como consultor independente, sigo ajudando empresas a reduzir o tempo de
+          análise executiva por meio de arquiteturas analíticas integradas com ERPs.
+        </p>
+
+        <p class="fade">
+          Estou ansioso para discutir como minha experiência em liderança estratégica e minha
+          paixão pela excelência técnica podem contribuir para os próximos desafios da
+          <strong>[Nome da Empresa]</strong>.
+        </p>
+
+        <footer class="signature rise" aria-label="Assinatura">
+          <p>Atenciosamente,</p>
+          <p><strong>Fabiano Fonseca</strong></p>
+
+          <div class="contact">
+            <span>São Luís, Maranhão</span>
+            <span>+55 98 9 9202-3224</span>
+            <span>fsanfo@gmail.com</span>
+            <span><a href="https://linkedin.com/in/fsanfo/">LinkedIn</a></span>
+            <span><a href="https://fsanfo.github.io/portfolio">Portfólio de Projetos</a></span>
+          </div>
+        </footer>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.getElementById("documentRoot");
+      const preloader = document.getElementById("preloader");
+      const smartHeader = document.getElementById("smartHeader");
+      const headline = document.getElementById("headline");
+
+      function splitHeadlineWords() {
+        if (!headline) return;
+        const words = headline.textContent.trim().split(/\s+/);
+        headline.innerHTML = words
+          .map((word, idx) => `<span class="word" style="transition-delay:${80 + idx * 45}ms">${word}</span>`)
+          .join(" ");
+      }
+
+      function initSmartHeader() {
+        if (!smartHeader) return;
+        let previousY = window.scrollY;
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            const currentY = window.scrollY;
+            if (currentY > previousY && currentY > 90) {
+              smartHeader.classList.add("is-hidden");
+            } else {
+              smartHeader.classList.remove("is-hidden");
+            }
+            previousY = currentY;
+          },
+          { passive: true }
+        );
+      }
+
+      splitHeadlineWords();
+      initSmartHeader();
+
+      window.addEventListener("load", () => {
+        if (preloader) {
+          preloader.classList.add("preloader--hidden");
+          setTimeout(() => {
+            preloader.remove();
+          }, 820);
+        }
+
+        requestAnimationFrame(() => {
+          root.classList.add("is-ready");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter - Language Redirect</title>
+  <style>
+    :root {
+      --bg: #f4f2ee;
+      --ink: #1b1a18;
+      --muted: #5f5951;
+      --line: #c5beb3;
+      --accent: #8f5f27;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background:
+        radial-gradient(120% 120% at 10% 10%, #ffffff 0%, rgba(255, 255, 255, 0) 56%),
+        radial-gradient(130% 130% at 90% 0%, #efe6d8 0%, rgba(239, 230, 216, 0) 50%),
+        linear-gradient(145deg, #f3f0ea 0%, #e8e2d8 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+
+    .card {
+      width: min(560px, 100%);
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 45px rgba(32, 22, 9, 0.12);
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+    }
+
+    p {
+      margin: 0 0 0.9rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.65rem 0.9rem;
+      cursor: pointer;
+      transition: transform 120ms ease, border-color 120ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    button.is-recommended {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(143, 95, 39, 0.12);
+    }
+
+    .status {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Language redirect selector">
+    <h1>Choose your language</h1>
+    <p>Escolha o idioma da carta. Sua preferencia sera lembrada neste navegador.</p>
+
+    <div class="buttons">
+      <button type="button" id="choosePt">Portuguese (pt-BR)</button>
+      <button type="button" id="chooseEn">English (en-US)</button>
+    </div>
+
+    <p class="status" id="status">Detecting preferred language...</p>
+  </main>
+
+  <script>
+    (function () {
+      const PT_FILE = "cover-letter-pt-br.html";
+      const EN_FILE = "cover-letter-en-us.html";
+      const LANG_KEY = "coverLetterLang";
+      const status = document.getElementById("status");
+
+      function normalizeLang(lang) {
+        if (!lang) return null;
+        const value = String(lang).toLowerCase();
+        if (value.startsWith("pt")) return "pt-BR";
+        if (value.startsWith("en")) return "en-US";
+        return null;
+      }
+
+      function targetForLang(lang) {
+        return lang === "pt-BR" ? PT_FILE : EN_FILE;
+      }
+
+      function goTo(lang, savePreference) {
+        if (!lang) return;
+        if (savePreference) {
+          localStorage.setItem(LANG_KEY, lang);
+        }
+        window.location.replace(targetForLang(lang));
+      }
+
+      function getLangFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        return normalizeLang(params.get("lang"));
+      }
+
+      function getPreferredLang() {
+        const fromStorage = normalizeLang(localStorage.getItem(LANG_KEY));
+        if (fromStorage) return { lang: fromStorage, source: "storage" };
+
+        const fromBrowser = normalizeLang(navigator.language || "");
+        if (fromBrowser) return { lang: fromBrowser, source: "browser" };
+
+        return { lang: "pt-BR", source: "default" };
+      }
+
+      document.getElementById("choosePt").addEventListener("click", function () {
+        goTo("pt-BR", true);
+      });
+
+      document.getElementById("chooseEn").addEventListener("click", function () {
+        goTo("en-US", true);
+      });
+
+      const fromQuery = getLangFromQuery();
+      if (fromQuery) {
+        if (status) {
+          status.textContent = "Language from URL: " + fromQuery + ". Redirecting...";
+        }
+        localStorage.setItem(LANG_KEY, fromQuery);
+        goTo(fromQuery, false);
+        return;
+      }
+
+      const preference = getPreferredLang();
+      const ptButton = document.getElementById("choosePt");
+      const enButton = document.getElementById("chooseEn");
+
+      if (preference.lang === "pt-BR") {
+        ptButton.classList.add("is-recommended");
+      } else {
+        enButton.classList.add("is-recommended");
+      }
+
+      if (status) {
+        status.textContent = "Suggested language: " + preference.lang + " (" + preference.source + "). Choose an option above.";
+      }
+    })();
+  </script>
+</body>
+</html>
