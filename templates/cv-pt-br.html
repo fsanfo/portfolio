@@ -58,6 +58,8 @@
         .project-info h3 { color: var(--port-blue); margin-top: 0; font-size: 1.1rem; }
         .project-info p { font-size: 0.82rem; margin-bottom: 8px; text-align: justify; color: #e0e0e0; }
         .project-link { display: inline-block; background: var(--port-blue); color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; }
+        .project-tags { margin: 6px 0 8px; display: flex; flex-wrap: wrap; gap: 4px; }
+        .hashtag-pill { display: inline-block; background: rgba(51,161,253,0.15); color: var(--port-blue); border: 1px solid rgba(51,161,253,0.35); border-radius: 20px; padding: 2px 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3px; }
 
         /* --- AJUSTES DE IMPRESSÃO --- */
         @media print {
@@ -83,7 +85,8 @@
     <div class="cv-section">
         <aside class="cv-sidebar">
             <div style="text-align: center; margin-bottom: 20px;">
-                <i class="fas fa-chart-pie fa-3x" style="color: var(--cv-accent)"></i>
+                <img src="../assets/avatar-linkedin-2.png" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--cv-accent); object-fit: cover;">
+                <p style="margin: 10px 0 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cv-accent); font-weight: 700;">Curriculum Vitae</p>
             </div>
             
             <h2>Contato</h2>
@@ -213,6 +216,7 @@
                     <div class="project-info">
                         <h3>Dune Chart: Storytelling com Dados</h3>
                         <p>Inspirado nas dunas dos Lençóis Maranhenses, este gráfico transforma linhas nativas em uma visualização YoY% rica via SVG, onde a forma e cor narram a performance mensal.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#DataVisualization</span><span class="hashtag-pill">#DuneChart</span><span class="hashtag-pill">#DataStorytelling</span><span class="hashtag-pill">#DataViz</span><span class="hashtag-pill">#YoYAnalysis</span><span class="hashtag-pill">#CustomVisuals</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
@@ -222,6 +226,7 @@
                     <div class="project-info">
                         <h3>DJ Equalizer: Dados em Som</h3>
                         <p>Uma metáfora criativa de um console de DJ onde os "Volumes" representam valores e o "Gain" exibe variações YoY, facilitando a exploração intuitiva para stakeholders.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#DataViz</span><span class="hashtag-pill">#DJEqualizer</span><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#Dashboard</span><span class="hashtag-pill">#Analytics</span><span class="hashtag-pill">#BusinessIntelligence</span><span class="hashtag-pill">#YearOverYear</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
@@ -231,6 +236,7 @@
                     <div class="project-info">
                         <h3>Padrões IBCS no Power BI</h3>
                         <p>Implementação dos padrões globais de comunicação de negócios usando medidas SVG e Visual Calculations para máxima clareza nos relatórios executivos.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#IBCS</span><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#SVG</span><span class="hashtag-pill">#DataViz</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
@@ -240,6 +246,7 @@
                     <div class="project-info">
                         <h3>Campos de Parâmetros Avançados</h3>
                         <p>Alternância dinâmica de contextos de análise (Vendas vs Margem vs Unidades) via Field Parameters, melhorando a usabilidade e reduzindo a carga cognitiva.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#ParameterFields</span><span class="hashtag-pill">#DataAnalytics</span><span class="hashtag-pill">#DAX</span><span class="hashtag-pill">#Dashboard</span><span class="hashtag-pill">#DataVisualization</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
@@ -249,6 +256,7 @@
                     <div class="project-info">
                         <h3>Dim Calendário: Oracle PL/SQL</h3>
                         <p>Criação de uma dimensão tempo robusta diretamente na camada de banco de dados via PL/SQL e Jobs, garantindo consistência em todo o DW.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#DataWarehouse</span><span class="hashtag-pill">#Oracle</span><span class="hashtag-pill">#PLSQL</span><span class="hashtag-pill">#DimCalendario</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
@@ -258,7 +266,68 @@
                     <div class="project-info">
                         <h3>Qualidade e Observabilidade de Dados</h3>
                         <p>Implementação do framework Great Expectations para monitoramento proativo de anomalias, garantindo a integridade dos dados antes da camada analítica.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#DataQuality</span><span class="hashtag-pill">#DataObservability</span><span class="hashtag-pill">#DataDriven</span><span class="hashtag-pill">#GreatExpectations</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/pyfabricops.png" alt="PyFabricOps"></div>
+                    <div class="project-info">
+                        <h3>PyFabricOps: Power BI + Python + Data Engineering</h3>
+                        <p>Projeto que integra Power BI, Python e práticas de engenharia de dados para acelerar automações analíticas e elevar a eficiência operacional em pipelines modernos.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#Python</span><span class="hashtag-pill">#DataEngineering</span><span class="hashtag-pill">#MicrosoftFabric</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/forecasting.png" alt="Forecasting"></div>
+                    <div class="project-info">
+                        <h3>Forecast e Planejamento com Data Analytics</h3>
+                        <p>Projeto voltado a previsão e planejamento orientado por dados, conectando análises de tendência com indicadores operacionais para apoiar decisões mais precisas.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#Forecast</span><span class="hashtag-pill">#Planejamento</span><span class="hashtag-pill">#DataAnalytics</span><span class="hashtag-pill">#PowerBI</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/rounded-bars.png" alt="Rounded Bars"></div>
+                    <div class="project-info">
+                        <h3>Rounded Bars: DataViz para Dashboard Design</h3>
+                        <p>Visual com barras arredondadas no Power BI para elevar legibilidade e impacto estético, combinando clareza analítica com uma experiência visual mais fluida em dashboards executivos.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#DataViz</span><span class="hashtag-pill">#DashboardDesign</span><span class="hashtag-pill">#DataVisualization</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-dashboarddesign-activity-7434287056375234560-sCKa" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/donut-velocimetro.jpg" alt="Velocimetro Donut"></div>
+                    <div class="project-info">
+                        <h3>Velocimetro no Power BI com Donut Nativo</h3>
+                        <p>Projeto de DataViz que demonstra como criar um gauge informativo e elegante usando apenas o grafico de donut nativo, sem HTML ou SVG, com foco em leitura executiva.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#DataViz</span><span class="hashtag-pill">#BusinessIntelligence</span><span class="hashtag-pill">#DAX</span><span class="hashtag-pill">#DashboardDesign</span><span class="hashtag-pill">#PowerBITips</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-businessintelligence-activity-7437113141685108736-FG25" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/data-goblin.png" alt="Data Goblin"></div>
+                    <div class="project-info">
+                        <h3>Data Goblin: Data Visualization no Power BI</h3>
+                        <p>Projeto voltado a storytelling visual em BI, explorando tecnicas de visualizacao para transformar indicadores de negocio em dashboards mais claros, intuitivos e orientados a decisao.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#DataVisualization</span><span class="hashtag-pill">#BusinessIntelligence</span><span class="hashtag-pill">#MicrosoftFabric</span><span class="hashtag-pill">#DataAnalytics</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7439633531640688640-rrdc" target="_blank" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-container"><img src="../assets/amazon-6-12.png" alt="Amazon 6-12"></div>
+                    <div class="project-info">
+                        <h3>Amazon 6-12: DataViz para Cenarios Complexos</h3>
+                        <p>Projeto que mostra como resolver visualizacoes de alta complexidade no Power BI com design orientado a leitura, equilibrando profundidade analitica e comunicacao executiva.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#DataVisualization</span><span class="hashtag-pill">#BusinessIntelligence</span><span class="hashtag-pill">#DAX</span></div>
+                        <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7444347033366306816-oyMk" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
 
@@ -267,6 +336,7 @@
                     <div class="project-info">
                         <h3>Otimização de Performance DAX</h3>
                         <p>Melhoria de 70% na performance de CPU através de otimização de modelos semânticos e tuning avançado de DAX em cenários reais complexos.</p>
+                        <div class="project-tags"><span class="hashtag-pill">#DAX</span><span class="hashtag-pill">#PowerBI</span><span class="hashtag-pill">#SQLBI</span><span class="hashtag-pill">#DataModeling</span><span class="hashtag-pill">#Performance</span></div>
                         <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
