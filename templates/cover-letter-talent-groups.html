@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Application: Power BI Developer (Talent Groups - Job ID: 231284)</title>
+  <style>
+    :root {
+      --graphite: #353535;
+      --stormy-teal: #3c6e71;
+      --white: #ffffff;
+      --alabaster-grey: #d9d9d9;
+      --yale-blue: #284b63;
+      --ink: #1f2933;
+      --paper: #f5f7f8;
+      --card: #ffffff;
+      --line: #d7e0e4;
+      --shadow: 0 10px 30px rgba(40, 75, 99, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% -10%, rgba(60, 110, 113, 0.2), transparent 36%),
+        radial-gradient(circle at 100% 0%, rgba(40, 75, 99, 0.18), transparent 30%),
+        var(--paper);
+      font-family: "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+      line-height: 1.55;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .page-shell {
+      width: min(980px, 94vw);
+      margin: 22px auto 40px;
+      border: 1px solid rgba(40, 75, 99, 0.16);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      position: relative;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: reveal 560ms ease-out forwards;
+    }
+
+    .hero {
+      position: relative;
+      padding: 28px 32px 24px;
+      background: linear-gradient(130deg, var(--yale-blue), var(--stormy-teal));
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -110px;
+      top: -210px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: none;
+    }
+
+    .hero-logo-frame {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(40, 75, 99, 0.08);
+    }
+
+    .hero-eyebrow {
+      margin: 0;
+      font-size: 0.84rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      margin: 8px 0 0;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      max-width: 680px;
+    }
+
+    .content {
+      padding: 26px 32px 16px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .block {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 20px;
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      break-inside: avoid;
+      page-break-inside: avoid;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: reveal 520ms ease-out forwards;
+    }
+
+    .block:nth-child(2) { animation-delay: 70ms; }
+    .block:nth-child(3) { animation-delay: 130ms; }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--graphite);
+      font-size: 1.2rem;
+      border-left: 4px solid var(--stormy-teal);
+      padding-left: 10px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .separator {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 6px 0;
+    }
+
+    .subject {
+      font-weight: 700;
+      color: var(--yale-blue);
+      margin-bottom: 12px;
+    }
+
+    .footer {
+      position: relative;
+      margin-top: 6px;
+      padding: 14px 32px 22px;
+      border-top: 1px solid var(--line);
+      color: #4f5b66;
+      font-size: 0.88rem;
+      overflow: visible;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      min-height: 64px;
+      gap: 14px;
+    }
+
+    .footer-watermark {
+      position: static;
+      width: 124px;
+      height: auto;
+      opacity: 1;
+      filter: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .footer strong {
+      color: var(--yale-blue);
+      letter-spacing: 0.02em;
+      z-index: 1;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .hero,
+      .content,
+      .footer {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-brand {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-logo {
+        width: 130px;
+      }
+
+      .hero-logo-frame {
+        padding: 8px 10px;
+      }
+
+      .footer {
+        min-height: 56px;
+      }
+
+      .footer-watermark {
+        width: 104px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 14mm 12mm;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #ffffff;
+      }
+
+      .page-shell,
+      .block {
+        box-shadow: none;
+      }
+
+      .page-shell {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        border: 0;
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .block {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .hero {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      h2,
+      p,
+      li,
+      .subject {
+        orphans: 3;
+        widows: 3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell" role="main">
+    <header class="hero">
+      <div class="hero-brand">
+        <div>
+          <p class="hero-eyebrow">Candidate Application</p>
+          <h1>Power BI Developer (Talent Groups - Job ID: 231284)</h1>
+        </div>
+        <div class="hero-logo-frame" aria-hidden="true">
+          <img class="hero-logo" src="../assets/logos/talent-group.svg" alt="Logo Talent Group">
+        </div>
+      </div>
+    </header>
+
+    <section class="content" aria-label="Cover Letter Content">
+      <article class="block">
+        <h2>📌 Job Overview</h2>
+        <ul>
+          <li><strong>Role:</strong> Power BI Developer</li>
+          <li><strong>Type:</strong> Contract (12 months to start)</li>
+          <li><strong>Location:</strong> Remote (Denver, CO)</li>
+          <li><strong>Key Focus:</strong> Requirements gathering, advanced data modeling (RLS/CLS), DAX performance tuning, IBCS/custom visuals, and workflow automation.</li>
+        </ul>
+      </article>
+
+      <article class="block">
+        <h2>📄 Cover Letter</h2>
+        <hr class="separator">
+        <p class="subject">Subject: Application for Power BI Developer - Job ID: 231284</p>
+
+        <p>Dear Hiring Team,</p>
+
+        <p>I am writing to express my strong interest in the Power BI Developer position at Talent Groups. With over 15 years of experience integrating technology and business strategy, I have a proven track record of building robust business intelligence departments from scratch, modernizing enterprise architectures, and turning raw data into strategic corporate engines.</p>
+
+        <p>My professional background directly aligns with the core pillars of your vacancy:</p>
+
+        <ul>
+          <li><strong>Requirements Gathering &amp; Reverse Engineering:</strong> Having served as both a Business Intelligence Manager and a Senior Business Analyst, I possess the unique ability to bridge the gap between complex business needs and technical execution. I am highly experienced in deconstructing manual, legacy processes—including intricate Excel models and formulas—and transforming them into streamlined, optimized analytical workflows.</li>
+          <li><strong>Advanced Data Modeling &amp; Performance Tuning:</strong> I specialize in designing efficient, reusable semantic data models and implementing rigorous data governance. My technical focus includes advanced DAX optimization and semantic model tuning—recently achieving a 70% boost in CPU performance using modern optimization tools—as well as reducing memory footprints and report loading times significantly in enterprise environments.</li>
+          <li><strong>High-Impact Visualization &amp; Innovation:</strong> I do not just build standard dashboards; I create high-end data stories. By applying global communication standards (IBCS) and developing advanced custom visual solutions with SVG and HTML, I ensure that C-level executives and stakeholders receive maximum clarity and intuitive usability from every report.</li>
+          <li><strong>Modern Workflows &amp; AI Familiarity:</strong> My development environment is centered on efficiency and cutting-edge practices. My project experience includes automating data refresh pipelines and workflows by integrating Python with Power BI (such as PyFabricOps), which directly mirrors your requirement for modern, AI-familiar development methodologies and robust version-controlled systems.</li>
+        </ul>
+
+        <p>I am highly confident that my deep technical expertise in Power BI, combined with my strategic vision and extensive experience in corporate environments, makes me an ideal fit for your 12-month BI program.</p>
+
+        <p>Thank you for your time and consideration. I welcome the opportunity to discuss how my background can add immediate value to your client’s team.</p>
+
+        <p>Sincerely,</p>
+
+        <p><strong>Fabiano Fonseca</strong> Senior Business Intelligence Consultant &amp; Data Analyst<br>
+        +55 98 9 9202-3224 | fsanfo@gmail.com<br>
+        <a href="https://linkedin.com/in/fsanfo/">LinkedIn</a> | <a href="https://fsanfo.github.io/portfolio">Portfolio</a></p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <strong>Fabiano Fonseca · Maio/2026</strong>
+      <img class="footer-watermark" src="../assets/logos/talent-group.svg" alt="Marca dagua Talent Group">
+    </footer>
+  </main>
+</body>
+</html>
