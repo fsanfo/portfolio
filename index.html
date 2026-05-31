@@ -274,10 +274,10 @@
 
         .hero {
             position: relative;
-            min-height: 100dvh;
+            min-height: clamp(36rem, 78dvh, 48rem);
             display: grid;
             align-items: center;
-            padding: min(20vh, 9rem) 0 4rem;
+            padding: min(16vh, 7.5rem) 0 2.5rem;
             z-index: 1;
         }
 
@@ -304,17 +304,18 @@
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 8vw, 7rem);
+            font-size: clamp(2.4rem, 7.2vw, 6rem);
             line-height: 0.95;
             letter-spacing: -0.04em;
             color: #f6faff;
             margin-bottom: 1.2rem;
-            max-width: 13ch;
+            max-width: 10.5ch;
+            text-wrap: balance;
         }
 
         .hero-title .line {
             display: block;
-            overflow: hidden;
+            white-space: nowrap;
         }
 
         .hero-lead {
@@ -562,10 +563,31 @@
         }
 
         .articles-grid {
-            margin-top: 2rem;
+            margin-top: 0;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
+        }
+
+        .articles-cluster {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .articles-cluster:first-of-type {
+            margin-top: 1.5rem;
+        }
+
+        .articles-cluster + .articles-cluster {
+            margin-top: 2.2rem;
+        }
+
+        .cluster-title {
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #90cdf4;
+            margin-bottom: 0;
         }
 
         .article {
@@ -873,13 +895,13 @@
         <section class="hero" id="inicio">
             <div class="container hero-grid">
                 <div>
-                    <span class="hero-eyebrow">transformação digital e business intelligence</span>
+                    <span class="hero-eyebrow">data visualization, power bi e narrativa executiva</span>
                     <h1 class="hero-title" id="heroTitle">
-                        <span class="line">Dados que</span>
-                        <span class="line">aceleram</span>
-                        <span class="line">estratégia</span>
+                        <span class="line">Dashboards</span>
+                        <span class="line">que clareiam</span>
+                        <span class="line">decisões</span>
                     </h1>
-                    <p class="hero-lead">Especialista em transformação digital e analytics, com atuação em arquitetura de dados, dashboards executivos e governança para decisões de alta velocidade.</p>
+                    <p class="hero-lead">Especialista em visualização de dados e storytelling executivo, com experiência em transformar métricas complexas em dashboards claros, rápidos de ler e orientados a decisão.</p>
                     <div class="hero-actions">
                         <a class="btn primary magnetic" href="#projetos">explorar projetos</a>
                         <a class="btn secondary magnetic" href="cv/FabianoFonsecaResume-pt-BR.pdf" target="_blank" rel="noopener noreferrer">cv pt-br</a>
@@ -891,28 +913,28 @@
                     <div class="avatar-orb parallax" data-speed="0.12">
                         <img src="assets/avatar-linkedin-2.png" alt="Foto de perfil de Fabiano Fonseca" loading="eager" decoding="async" fetchpriority="high">
                     </div>
-                    <span class="floating-chip chip-1 parallax" data-speed="0.16">15+ anos em BI e estratégia</span>
-                    <span class="floating-chip chip-2 parallax" data-speed="0.2">+60% agilidade em relatórios</span>
+                    <span class="floating-chip chip-1 parallax" data-speed="0.16">DataViz para leitura executiva</span>
+                    <span class="floating-chip chip-2 parallax" data-speed="0.2">IBCS, DAX e decisões mais rápidas</span>
                 </div>
             </div>
         </section>
 
         <section class="section" id="sobre">
             <div class="container">
-                <h2>Estratégia de dados com narrativa executiva</h2>
-                <p class="section-intro">Construo jornadas analíticas que conectam operação, finanças e comercial para transformar ruído em clareza. O objetivo não é só visualizar indicadores, mas orientar decisões com contexto e cadência.</p>
+                <h2>Visualização de dados para contexto executivo</h2>
+                <p class="section-intro">Desenho experiências analíticas que reduzem ruído, organizam prioridades e deixam a leitura executiva mais objetiva. Meu foco é combinar modelagem, semântica visual e narrativa de negócio para que o dashboard já aponte a conversa certa.</p>
                 <div class="pillars">
                     <article class="pillar parallax" data-speed="0.1">
-                        <strong>Arquitetura</strong>
-                        <p>Integração de fontes, modelagem semântica e padrões de governança para confiabilidade analítica.</p>
+                        <strong>Clareza</strong>
+                        <p>Hierarquia visual, comparativos e padronização para reduzir carga cognitiva em painéis executivos.</p>
                     </article>
                     <article class="pillar parallax" data-speed="0.14">
-                        <strong>Performance</strong>
-                        <p>Dashboards com foco em tempo de resposta, legibilidade e consumo executivo de informação.</p>
+                        <strong>Contexto</strong>
+                        <p>Métricas conectadas a metas, sazonalidade e drivers do negócio para evitar leitura superficial.</p>
                     </article>
                     <article class="pillar parallax" data-speed="0.08">
                         <strong>Adoção</strong>
-                        <p>Rituais de leitura e priorização para transformar dados em ação contínua no negócio.</p>
+                        <p>Dashboards pensados para a rotina de liderança, com leitura rápida e decisões mais consistentes.</p>
                     </article>
                 </div>
             </div>
@@ -957,125 +979,126 @@
 
         <section class="section" id="projetos">
             <div class="container">
-                <h2>Casos em destaque</h2>
-                <p class="section-intro">Projetos reais de Business Intelligence, desenvolvidos para diferentes áreas do negócio, com profundidade técnica em modelagem, indicadores, performance e narrativa executiva para sustentar decisões críticas.</p>
+                <h2>Dashboards em destaque</h2>
+                <p class="section-intro">Cada caso parte de um problema de leitura: excesso de informação, comparação confusa, baixa aderência executiva ou dificuldade de priorização. A solução combina modelagem analítica com decisões de design para tornar o dashboard mais explicativo, acionável e confiável.</p>
+                <p class="section-intro">Esses dashboards não representam um trabalho paralelo ao meu histórico profissional: refletem os mesmos desafios de clareza executiva, priorização e comunicação visual que venho resolvendo em BI, varejo, finanças, supply e operações.</p>
                 <div class="project-grid" id="projectGrid">
                     <article class="project-card magnetic" tabindex="0"
-                        data-title="Painel Executivo de Performance Corporativa"
-                        data-sub="Visão consolidada de indicadores estratégicos para tomada de decisão"
+                        data-title="Performance Corporativa para Leitura Executiva"
+                        data-sub="Visão integrada de indicadores para priorização executiva"
                         data-img="assets/pbi/compras-painel-de-bordo.png"
                         data-tags="Business Intelligence, Dashboard Executivo, KPIs, Data Analytics"
-                        data-desc="Dashboard interativo desenvolvido para acompanhamento de indicadores-chave de desempenho em nível corporativo, incluindo vendas, margem, ruptura e compras. Permite análise por departamento e regime contábil."
+                        data-desc="Desenvolvido para consolidar indicadores dispersos em uma leitura única de performance corporativa. Reorganiza vendas, margem, ruptura e compras em uma hierarquia visual comparável, facilitando priorização, alinhamento entre áreas e decisões mais rápidas em fóruns executivos."
                         data-hash="#PowerBI #BusinessIntelligence #DashboardExecutivo #DataDriven #Analytics">
                         <img src="assets/pbi/compras-painel-de-bordo.png" class="project-img" alt="Painel executivo com indicadores corporativos" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <h3>Painel Executivo</h3>
-                            <p>Tomada de decisão estratégica</p>
+                            <h3>Performance Corporativa</h3>
+                            <p>Leitura executiva integrada</p>
                             <span class="btn-trigger">Ver projeto</span>
                         </div>
                     </article>
 
                     <article class="project-card magnetic" tabindex="0"
-                        data-title="Monitor de Indicadores Comerciais (KPIs)"
-                        data-sub="Acompanhamento de desempenho de vendas, margem e ticket médio"
-                        data-img="assets/pbi/comercial-kpi-cover.png"
-                        data-tags="KPIs Comerciais, Vendas, Performance, Indicadores"
-                        data-desc="Painel analítico focado em indicadores comerciais essenciais, com destaque para crescimento de receita e ticket médio. Inclui comparativos temporais e visualizações de tendência."
-                        data-hash="#KPIs #Vendas #PerformanceComercial #PowerBI #DataAnalytics">
-                        <img src="assets/pbi/comercial-kpi-cover.png" class="project-img" alt="Monitor de indicadores comerciais e vendas" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <h3>Monitor Comercial</h3>
-                            <p>Gestão de vendas</p>
-                            <span class="btn-trigger">Ver projeto</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card magnetic" tabindex="0"
-                        data-title="Dashboard Financeiro com Análise de EBITDA"
-                        data-sub="Visão detalhada da saúde financeira e rentabilidade operacional"
+                        data-title="Performance Financeira e EBITDA"
+                        data-sub="Saúde financeira e rentabilidade em leitura executiva"
                         data-img="assets/pbi/controladoria-ebitda.png"
                         data-tags="Financeiro, EBITDA, DRE, Controladoria"
-                        data-desc="Painel financeiro completo com análise de receitas, custos, despesas e indicadores como EBITDA e lucro líquido. Suporte fundamental para a controladoria e performance econômica."
+                        data-desc="Estruturado para transformar uma leitura financeira densa em um painel mais objetivo para controladoria e diretoria. Organiza receitas, custos, despesas e EBITDA em camadas visuais que evidenciam desvios, pressão de margem e resultado operacional sem exigir análise excessiva."
                         data-hash="#EBITDA #Financeiro #Controladoria #PowerBI #DataDriven">
                         <img src="assets/pbi/controladoria-ebitda.png" class="project-img" alt="Dashboard financeiro com análise de EBITDA" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <h3>Análise de EBITDA</h3>
-                            <p>Controladoria e saúde financeira</p>
+                            <h3>Performance Financeira</h3>
+                            <p>EBITDA e saúde operacional</p>
                             <span class="btn-trigger">Ver projeto</span>
                         </div>
                     </article>
 
                     <article class="project-card magnetic" tabindex="0"
-                        data-title="Segmentação de Clientes com Modelo RFM"
-                        data-sub="Análise comportamental para estratégias de marketing e retenção"
-                        data-img="assets/pbi/marketing-rfm.png"
-                        data-tags="RFM, Marketing Analytics, CRM, Segmentação"
-                        data-desc="Dashboard de análise RFM (Recência, Frequência e Valor). Identifica perfis como clientes fiéis ou em risco, permitindo ações direcionadas de marketing."
-                        data-hash="#RFM #MarketingAnalytics #CRM #CustomerInsights #PowerBI">
-                        <img src="assets/pbi/marketing-rfm.png" class="project-img" alt="Segmentação de clientes usando modelo RFM" loading="lazy" decoding="async">
+                        data-title="Performance Comercial e KPIs de Receita"
+                        data-sub="Vendas, margem e ticket médio com leitura comparável"
+                        data-img="assets/pbi/comercial-kpi-cover.png"
+                        data-tags="KPIs Comerciais, Vendas, Performance, Indicadores"
+                        data-desc="Criado para tornar mais visível onde a operação comercial ganha ou perde tração. Usa comparativos temporais, variação e tendência para transformar receita, margem e ticket médio em uma leitura direta, útil para cobrança, ajuste de rota e acompanhamento gerencial."
+                        data-hash="#KPIs #Vendas #PerformanceComercial #PowerBI #DataAnalytics">
+                        <img src="assets/pbi/comercial-kpi-cover.png" class="project-img" alt="Monitor de indicadores comerciais e vendas" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <h3>Modelo RFM</h3>
-                            <p>Segmentação e retenção de clientes</p>
+                            <h3>Performance Comercial</h3>
+                            <p>Receita, margem e ticket</p>
                             <span class="btn-trigger">Ver projeto</span>
                         </div>
                     </article>
 
                     <article class="project-card magnetic" tabindex="0"
-                        data-title="E-commerce: Monitoramento de Metas"
-                        data-sub="Acompanhamento de metas de vendas e conversão no canal digital"
-                        data-img="assets/pbi/ecommerce-metas.png"
-                        data-tags="E-commerce, Metas, Conversão, Varejo Digital"
-                        data-desc="Painel focado no controle de metas para operações digitais, com visão de atingimento por canal e categoria. Apoia a agilidade em campanhas."
-                        data-hash="#Ecommerce #Metas #VarejoDigital #PowerBI #Analytics">
-                        <img src="assets/pbi/ecommerce-metas.png" class="project-img" alt="Monitoramento de metas de e-commerce" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <h3>Monitor de Metas</h3>
-                            <p>Performance em canais digitais</p>
-                            <span class="btn-trigger">Ver projeto</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card magnetic" tabindex="0"
-                        data-title="E-commerce: Análise de Vendas"
-                        data-sub="Visão analítica do desempenho de vendas no canal digital"
-                        data-img="assets/pbi/ecommerce-vendas.png"
-                        data-tags="E-commerce, Vendas, Revenue, Varejo Digital"
-                        data-desc="Análise de receita, volume de pedidos e sazonalidade. Focado na otimização do mix comercial e identificação de categorias de alta performance."
-                        data-hash="#Ecommerce #Vendas #PowerBI #DataAnalytics #VarejoDigital">
-                        <img src="assets/pbi/ecommerce-vendas.png" class="project-img" alt="Análise de vendas e receita de e-commerce" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <h3>Análise de Vendas</h3>
-                            <p>Mix comercial e volumetria</p>
-                            <span class="btn-trigger">Ver projeto</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card magnetic" tabindex="0"
-                        data-title="Supply Chain: On-Time Delivery (OTD)"
-                        data-sub="Monitoramento do índice de entregas no prazo ao longo da cadeia"
-                        data-img="assets/pbi/supply-chain-otd.png"
-                        data-tags="Supply Chain, OTD, Logística, Operações"
-                        data-desc="Controle do indicador OTD com visão por fornecedor e rota. Identifica gargalos logísticos e garante o cumprimento de prazos."
-                        data-hash="#SupplyChain #OTD #Logística #PowerBI #Operações">
-                        <img src="assets/pbi/supply-chain-otd.png" class="project-img" alt="Indicador de entregas no prazo da cadeia logística" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <h3>Supply Chain: OTD</h3>
-                            <p>Logística e pontualidade</p>
-                            <span class="btn-trigger">Ver projeto</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card magnetic" tabindex="0"
-                        data-title="Supply Chain: Gestão de SLA"
-                        data-sub="Controle de nível de serviço e conformidade de acordos operacionais"
+                        data-title="Risco Operacional e Gestão de SLA"
+                        data-sub="Conformidade de serviço com desvios e prioridades visíveis"
                         data-img="assets/pbi/supply-chain-sla.png"
                         data-tags="Supply Chain, SLA, Nível de Serviço, Conformidade"
-                        data-desc="Dashboard de acompanhamento de Service Level Agreement. Monitora conformidade por contrato e fornecedor com alertas para desvios críticos."
+                        data-desc="Desenhado para converter contratos e indicadores de serviço em uma leitura clara de risco operacional. Destaca conformidade por fornecedor, desvios críticos e prioridades de acompanhamento, ajudando a liderança a identificar rapidamente onde há exposição e necessidade de ação."
                         data-hash="#SLA #SupplyChain #Conformidade #PowerBI #GestãoDeServicos">
                         <img src="assets/pbi/supply-chain-sla.png" class="project-img" alt="Gestão de SLA e conformidade de serviços" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <h3>Gestão de SLA</h3>
-                            <p>Conformidade operacional</p>
+                            <h3>Risco de SLA</h3>
+                            <p>Conformidade e desvios críticos</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card magnetic" tabindex="0"
+                        data-title="Pontualidade Logística com OTD"
+                        data-sub="Entregas no prazo por fornecedor, rota e causa de atraso"
+                        data-img="assets/pbi/supply-chain-otd.png"
+                        data-tags="Supply Chain, OTD, Logística, Operações"
+                        data-desc="Construído para expor gargalos logísticos sem depender de leitura operacional extensa. Mostra OTD por fornecedor, rota e recorrência de atraso em uma estrutura visual que acelera diagnóstico, priorização e decisões corretivas."
+                        data-hash="#SupplyChain #OTD #Logística #PowerBI #Operações">
+                        <img src="assets/pbi/supply-chain-otd.png" class="project-img" alt="Indicador de entregas no prazo da cadeia logística" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Pontualidade Logística</h3>
+                            <p>OTD por rota e fornecedor</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card magnetic" tabindex="0"
+                        data-title="Segmentação de Clientes e Retenção"
+                        data-sub="Leitura comportamental para campanhas, retenção e reativação"
+                        data-img="assets/pbi/marketing-rfm.png"
+                        data-tags="RFM, Marketing Analytics, CRM, Segmentação"
+                        data-desc="Projetado para transformar segmentação analítica em comunicação acionável para marketing e CRM. A leitura visual separa clientes fiéis, em risco e com potencial de reativação, facilitando campanhas, retenção e definição de prioridades comerciais."
+                        data-hash="#RFM #MarketingAnalytics #CRM #CustomerInsights #PowerBI">
+                        <img src="assets/pbi/marketing-rfm.png" class="project-img" alt="Segmentação de clientes usando modelo RFM" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Segmentação de Clientes</h3>
+                            <p>Retenção e reativação</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card magnetic" tabindex="0"
+                        data-title="Atingimento de Metas no E-commerce"
+                        data-sub="Metas, conversão e reação mais rápida no canal digital"
+                        data-img="assets/pbi/ecommerce-metas.png"
+                        data-tags="E-commerce, Metas, Conversão, Varejo Digital"
+                        data-desc="Criado para evidenciar rapidamente o desvio entre meta e execução no canal digital. Destaca atingimento por canal e categoria com uma leitura simples de progresso, ajudando o time a reagir mais rápido em campanhas, conversão e ajuste de meta."
+                        data-hash="#Ecommerce #Metas #VarejoDigital #PowerBI #Analytics">
+                        <img src="assets/pbi/ecommerce-metas.png" class="project-img" alt="Monitoramento de metas de e-commerce" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Metas Digitais</h3>
+                            <p>Conversão e atingimento</p>
+                            <span class="btn-trigger">Ver projeto</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card magnetic" tabindex="0"
+                        data-title="Receita, Sazonalidade e Mix no E-commerce"
+                        data-sub="Desempenho comercial por categorias, pedidos e sazonalidade"
+                        data-img="assets/pbi/ecommerce-vendas.png"
+                        data-tags="E-commerce, Vendas, Revenue, Varejo Digital"
+                        data-desc="Desenvolvido para tornar sazonalidade, receita e mix mais legíveis em um ambiente de alta variação. Combina pedidos, categorias e desempenho comercial em uma navegação visual que ajuda a identificar alavancas de crescimento, perda de tração e oportunidades de ajuste."
+                        data-hash="#Ecommerce #Vendas #PowerBI #DataAnalytics #VarejoDigital">
+                        <img src="assets/pbi/ecommerce-vendas.png" class="project-img" alt="Análise de vendas e receita de e-commerce" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <h3>Receita e Mix</h3>
+                            <p>Sazonalidade e categorias</p>
                             <span class="btn-trigger">Ver projeto</span>
                         </div>
                     </article>
@@ -1086,120 +1109,130 @@
         <section class="section" id="artigos">
             <div class="container">
                 <h2>Artigos e experimentos visuais</h2>
-                <p class="section-intro">Conteúdos técnicos publicados com foco em visual storytelling, performance analítica e engenharia de dados aplicada.</p>
-                <div class="articles-grid">
-                    <article class="article magnetic">
-                        <img src="assets/dune-chart.png" alt="Dune Chart: visualização com história" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Dune Chart: Visualização com História</h3>
-                            <p>Visual inspirado nos Lençóis Maranhenses para comunicar YoY% com contexto narrativo.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/dj-equalizer.png" alt="DJ Equalizer aplicado a DataViz" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>DJ Equalizer: Tirando um Som dos Dados</h3>
-                            <p>Uma metáfora visual para representar intensidade, variação e desempenho de métricas.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/pyfabricops.png" alt="Automação de refresh com Python no Power BI" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>PyFabricOps e Refresh Automatizado</h3>
-                            <p>Automação operacional de Dataflows e Semantic Models com rastreabilidade e logging.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/ibcs-1.png" alt="Aplicação de IBCS em visuais nativos" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Soluções IBCS com Visuais Nativos</h3>
-                            <p>Aplicação do padrão IBCS em Power BI com medidas SVG e cálculos visuais para mais clareza.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/forecast.png" alt="Estudo sobre abordagens de forecast" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Forecast: Abordagens e Limitações</h3>
-                            <p>Comparativo entre venda futura, média móvel e inteligência temporal para planejamento.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/governanca.png" alt="Governança de dados e versionamento da verdade" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Quando a Reunião Vira Debate de Dashboard</h3>
-                            <p>Reflexão sobre padronização de métricas, curadoria e rastreabilidade para decisões executivas.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/parameter-field.png" alt="Uso avançado de parameter fields" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Parameter Fields: Múltiplas Análises</h3>
-                            <p>Uso avançado de campos de parâmetros para alternar contextos analíticos com usabilidade.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/calendar-oracle.png" alt="Dim Calendar em Oracle com PL SQL" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Dim Calendar: Oracle Database</h3>
-                            <p>Tabela calendário robusta em Oracle com PL/SQL e Jobs para manutenção contínua.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/greater-expectations.png" alt="Great Expectations para qualidade de dados" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Great Expectations e Observabilidade Proativa</h3>
-                            <p>Implementação de validação contínua de qualidade de dados com foco em confiança analítica.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/dax-optimizer.png" alt="Otimização de modelo com DAX Optimizer" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>DAX Optimizer Basic: Otimização de Performance</h3>
-                            <p>Aplicação prática das recomendações do DAX Optimizer para ganho de performance.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/rounded-bars.png" alt="Rounded Bars para design de dashboard" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Rounded Bars: DataViz para Dashboard Design</h3>
-                            <p>Barras arredondadas em Power BI para elevar legibilidade e impacto visual em painéis executivos.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-dashboarddesign-activity-7434287056375234560-sCKa" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/donut-velocimetro.jpg" alt="Velocímetro com donut nativo no Power BI" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Velocímetro no Power BI com Donut Nativo</h3>
-                            <p>Gauge elegante usando gráfico de donut nativo, sem HTML ou SVG, com foco em leitura executiva.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-businessintelligence-activity-7437113141685108736-FG25" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/data-goblin.png" alt="Data Goblin aplicado a visualização de dados" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Data Goblin: Data Visualization no Power BI</h3>
-                            <p>Storytelling visual para transformar indicadores de negócio em dashboards mais claros e orientados à decisão.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7439633531640688640-rrdc" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
-                    <article class="article magnetic">
-                        <img src="assets/amazon-6-12.png" alt="Amazon 6-12 para cenários analíticos complexos" loading="lazy" decoding="async">
-                        <div class="article-content">
-                            <h3>Amazon 6-12: DataViz para Cenários Complexos</h3>
-                            <p>Design orientado à leitura para visualizações complexas no Power BI, equilibrando profundidade analítica e comunicação executiva.</p>
-                            <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7444347033366306816-oyMk" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
-                        </div>
-                    </article>
+                <p class="section-intro">Primeiro, destaco explorações de visualização e design de dashboards. Depois, deixo uma trilha separada para engenharia, observabilidade e performance analítica que sustenta a confiabilidade desses produtos.</p>
+
+                <div class="articles-cluster">
+                    <p class="cluster-title">Visualização de Dados e Design de Dashboards</p>
+                    <div class="articles-grid">
+                        <article class="article magnetic">
+                            <img src="assets/dune-chart.png" alt="Dune Chart: visualização com história" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Dune Chart: Visualização com História</h3>
+                                <p>Visual inspirado nos Lençóis Maranhenses para comunicar YoY% com contexto narrativo.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-dunechart-activity-7391454317611921408-2qQQ" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/dj-equalizer.png" alt="DJ Equalizer aplicado a DataViz" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>DJ Equalizer: Tirando um Som dos Dados</h3>
+                                <p>Uma metáfora visual para representar intensidade, variação e desempenho de métricas.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_dataviz-datavisualization-djequalizer-activity-7394026491916984320-A_Lv" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/ibcs-1.png" alt="Aplicação de IBCS em visuais nativos" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Soluções IBCS com Visuais Nativos</h3>
+                                <p>Aplicação do padrão IBCS em Power BI com medidas SVG e cálculos visuais para mais clareza.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_ibcs-powerbi-svg-activity-7388974193696112640-nryy" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/parameter-field.png" alt="Uso avançado de parameter fields" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Parameter Fields: Múltiplas Análises</h3>
+                                <p>Uso avançado de campos de parâmetros para alternar contextos analíticos com usabilidade.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataanalytics-businessintelligence-activity-7390005031942639616-Bt_z" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/rounded-bars.png" alt="Rounded Bars para design de dashboard" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Rounded Bars: DataViz para Dashboard Design</h3>
+                                <p>Barras arredondadas em Power BI para elevar legibilidade e impacto visual em painéis executivos.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-dashboarddesign-activity-7434287056375234560-sCKa" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/donut-velocimetro.jpg" alt="Velocímetro com donut nativo no Power BI" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Velocímetro no Power BI com Donut Nativo</h3>
+                                <p>Gauge elegante usando gráfico de donut nativo, sem HTML ou SVG, com foco em leitura executiva.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-dataviz-businessintelligence-activity-7437113141685108736-FG25" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/data-goblin.png" alt="Data Goblin aplicado a visualização de dados" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Data Goblin: Data Visualization no Power BI</h3>
+                                <p>Storytelling visual para transformar indicadores de negócio em dashboards mais claros e orientados à decisão.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7439633531640688640-rrdc" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/amazon-6-12.png" alt="Amazon 6-12 para cenários analíticos complexos" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Amazon 6-12: DataViz para Cenários Complexos</h3>
+                                <p>Design orientado à leitura para visualizações complexas no Power BI, equilibrando profundidade analítica e comunicação executiva.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-datavisualization-businessintelligence-activity-7444347033366306816-oyMk" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="articles-cluster">
+                    <p class="cluster-title">Engenharia, Data Ops e Performance Analítica</p>
+                    <div class="articles-grid">
+                        <article class="article magnetic">
+                            <img src="assets/pyfabricops.png" alt="Automação de refresh com Python no Power BI" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>PyFabricOps e Refresh Automatizado</h3>
+                                <p>Automação operacional de Dataflows e Semantic Models com rastreabilidade e logging.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_powerbi-python-dataengineering-activity-7419339085850378240-5k5r" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/governanca.png" alt="Governança de dados e versionamento da verdade" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Quando a Reunião Vira Debate de Dashboard</h3>
+                                <p>Reflexão sobre padronização de métricas, curadoria e rastreabilidade para decisões executivas.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_governanaexadedados-datagovernance-dados-activity-7407425498852540416-xTZp" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/forecast.png" alt="Estudo sobre abordagens de forecast" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Forecast: Abordagens e Limitações</h3>
+                                <p>Comparativo entre venda futura, média móvel e inteligência temporal para planejamento.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_forecast-planejamento-dataanalytics-activity-7415002495728656384-9ASa" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/calendar-oracle.png" alt="Dim Calendar em Oracle com PL SQL" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Dim Calendar: Oracle Database</h3>
+                                <p>Tabela calendário robusta em Oracle com PL/SQL e Jobs para manutenção contínua.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_datawarehouse-oracle-plsql-activity-7399115576306180097--HBK" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/greater-expectations.png" alt="Great Expectations para qualidade de dados" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>Great Expectations e Observabilidade Proativa</h3>
+                                <p>Implementação de validação contínua de qualidade de dados com foco em confiança analítica.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_datadriven-dataquality-dataobservability-activity-7402704453797289984-y9wj" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                        <article class="article magnetic">
+                            <img src="assets/dax-optimizer.png" alt="Otimização de modelo com DAX Optimizer" loading="lazy" decoding="async">
+                            <div class="article-content">
+                                <h3>DAX Optimizer Basic: Otimização de Performance</h3>
+                                <p>Aplicação prática das recomendações do DAX Optimizer para ganho de performance.</p>
+                                <a href="https://www.linkedin.com/posts/fsanfo_dax-powerbi-sqlbi-activity-7404588289514459137-f7CV" target="_blank" rel="noopener noreferrer">Ler no LinkedIn</a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
