@@ -420,6 +420,48 @@
             margin-top: 2rem;
         }
 
+        .skills-shell {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .skills-group {
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 18px;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(5px);
+        }
+
+        .skills-group strong {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #90cdf4;
+            margin-bottom: 0.75rem;
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .skill-chip {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(125, 211, 252, 0.44);
+            border-radius: 999px;
+            background: rgba(125, 211, 252, 0.1);
+            color: #eaf6ff;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            padding: 0.32rem 0.6rem;
+        }
+
         .pillar {
             border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: 18px;
@@ -729,7 +771,8 @@
 
         @media (max-width: 1024px) {
             .hero-grid,
-            .pillars {
+            .pillars,
+            .skills-shell {
                 grid-template-columns: 1fr;
             }
 
@@ -812,6 +855,7 @@
             <nav aria-label="Navegação principal">
                 <ul class="nav-links">
                     <li><a class="nav-item" href="#sobre" data-copy="Visão sobre a minha atuação em arquitetura analítica, governança e aceleração de decisões executivas.">Sobre</a></li>
+                    <li><a class="nav-item" href="#habilidades" data-copy="Panorama das competências técnicas mais valorizadas para BI moderno, de modelagem a visual analytics.">Habilidades</a></li>
                     <li><a class="nav-item" href="#projetos" data-copy="Projetos reais de BI com entregas em finanças, comercial, supply chain, marketing e operações." >Projetos</a></li>
                     <li><a class="nav-item" href="#artigos" data-copy="Conteúdo técnico sobre visualização, modelagem analítica, engenharia e boas práticas de dados.">Artigos</a></li>
                     <li><a class="nav-item" href="#contato" data-copy="Canais diretos para conversar sobre transformação digital, dashboards e estratégia orientada por dados.">Contato</a></li>
@@ -869,6 +913,43 @@
                     <article class="pillar parallax" data-speed="0.08">
                         <strong>Adoção</strong>
                         <p>Rituais de leitura e priorização para transformar dados em ação contínua no negócio.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="habilidades">
+            <div class="container">
+                <h2>Habilidades técnicas em foco</h2>
+                <p class="section-intro">Competências aplicadas no dia a dia para estruturar modelos analíticos robustos, escalar cálculos de negócio e transformar dados em decisões visuais de alto impacto.</p>
+                <div class="skills-shell">
+                    <article class="skills-group">
+                        <strong>Data Foundation</strong>
+                        <div class="skills-cloud">
+                            <span class="skill-chip">Data Modeling</span>
+                            <span class="skill-chip">SQL (PL/SQL, T-SQL)</span>
+                            <span class="skill-chip">Data Governance</span>
+                            <span class="skill-chip">Microsoft Fabric</span>
+                            <span class="skill-chip">Oracle</span>
+                        </div>
+                    </article>
+                    <article class="skills-group">
+                        <strong>Advanced Analytics</strong>
+                        <div class="skills-cloud">
+                            <span class="skill-chip">Advanced DAX Calculations</span>
+                            <span class="skill-chip">DAX Optimization</span>
+                            <span class="skill-chip">ERP Analytics</span>
+                            <span class="skill-chip">Power BI Semantic Models</span>
+                        </div>
+                    </article>
+                    <article class="skills-group">
+                        <strong>Visualization Craft</strong>
+                        <div class="skills-cloud">
+                            <span class="skill-chip">Advanced Visualization Techniques</span>
+                            <span class="skill-chip">IBCS Standards</span>
+                            <span class="skill-chip">Executive Dashboards</span>
+                            <span class="skill-chip">Data Storytelling</span>
+                        </div>
                     </article>
                 </div>
             </div>
